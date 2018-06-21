@@ -1,3 +1,14 @@
 <%= render 'follow_form' if user_signed_in? %>
 
 <%= @user.username %>
+
+<% if @posts %>
+  <% @posts.each do |p| %>
+    <%= link_to "Show", user_post_path(@user, p) %>
+    <%= image_tag(p.image) %>
+  <% end %>
+<% end %>
+
+<% if current_user?(@user) %>
+  <%= link_to "New Post", new_user_post_path(current_user) %>
+<% end %>

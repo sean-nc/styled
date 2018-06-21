@@ -13,6 +13,20 @@
     <%= f.text_field :username, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, placeholder: "Optional (maximum 300 characters)"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.label :gender_male, 'Male' %>
+    <%= f.radio_button :gender, 'Male' %>
+    <%= f.label :gender_female, 'Female' %>
+    <%= f.radio_button :gender, 'Female' %><br />
+  </div>
+
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

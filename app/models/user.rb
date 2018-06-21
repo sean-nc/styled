@@ -7,6 +7,8 @@ class User < ApplicationRecord
             length: { minimum: 3 }, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username
+  validates :gender, presence: true, :inclusion => { :in => ["Male", "Female"] }
+  validates :description, length: { maximum: 300 }
 
   attr_writer :login
 

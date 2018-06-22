@@ -1,6 +1,5 @@
 <%= image_tag @post.image.url if @post.image? %>
 <p><%= @post.description %></p>
-<p><%= @post.gender %></p>
 
 <p id="likes"><%= @post.likes.count %></p>
 <%= render 'like_form' %>

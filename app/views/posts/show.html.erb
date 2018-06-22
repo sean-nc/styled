@@ -2,6 +2,9 @@
 <p><%= @post.description %></p>
 <p><%= @post.gender %></p>
 
+<p id="likes"><%= @post.likes.count %></p>
+<%= render 'like_form' %>
+
 
 <% if current_user?(@user) %>
   <%= link_to 'Back', @user %>

@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :destroy]
   before_action :correct_user?, only: :destroy
+  before_action :logged_in?
+
 
   def show
     @user = User.find(@post.user_id)

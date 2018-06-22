@@ -4,9 +4,20 @@
 <p id="likes"><%= @post.likes.count %></p>
 <%= render 'like_form' %>
 
+<% @post.clothing_articles.each do |c| %>
+  <p><%= c.title %></p>
+  <p><%= c.description %></p>
+  <%= link_to 'Buy', c.url, class: "btn btn-primary" %>
+  <% if current_user?(@user) %>
+    <%= link_to 'Destroy', [current_user, @post, c], method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit', edit_user_post_clothing_article_path(current_user, @post, c) %><br />
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', @user %>
 
 <% if current_user?(@user) %>
-  <%= link_to 'Back', @user %>
   <%= link_to 'Destroy', [current_user, @post], method: :delete, data: { confirm: 'Are you sure?' } %>
   <%= link_to 'Edit', edit_user_post_path(current_user, @post) %>
+  <%= link_to 'Add Clothing', new_user_post_clothing_article_path(current_user, @post) %>
 <% end %>

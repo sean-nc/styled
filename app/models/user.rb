@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :clothing_articles, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, presence: true,

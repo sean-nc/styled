@@ -17,4 +17,12 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_path
     end
   end
+
+  def correct_user?
+    @user = User.find(@post.user_id)
+    unless @user == current_user
+      flash[:alert] = "You're not allowed to do that"
+      redirect_to @user
+    end
+  end
 end

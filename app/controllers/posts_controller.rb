@@ -50,14 +50,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def correct_user?
-    @user = User.find(@post.user_id)
-    unless @user == current_user
-      flash[:alert] = "You're not allowed to do that"
-      redirect_to @user
-    end
-  end
-
   def post_params
     params.require(:post).permit(:image, :gender, :description)
   end

@@ -1,0 +1,34 @@
+<%= image_tag @post.image.url if @post.image? %>
+
+<%= form_for([current_user, @post, @clothing_article]) do |form| %>
+  <% if @clothing_article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@clothing_article.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @clothing_article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -28,6 +28,22 @@ class PostsController < ApplicationController
     redirect_to current_user
   end
 
+  def edit
+    @post = Post.find_by(user_id: params[:user_id],
+                         id: params[:id])
+  end
+
+  def update
+    @post = Post.find_by(user_id: params[:user_id],
+                         id: params[:id])
+    if @post.update_attributes(post_params)
+      flash[:success] = "Post updated"
+      redirect_to [current_user, @post]
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def set_post
@@ -43,6 +59,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:image, :gender)
+    params.require(:post).permit(:image, :gender, :description)
   end
 end

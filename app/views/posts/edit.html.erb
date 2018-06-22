@@ -1,0 +1,36 @@
+<%= image_tag @post.image.url if @post.image? %>
+
+<%= form_for(@post, url: [current_user, @post]) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender, "Male" %>
+    <%= form.radio_button :gender, "Male", checked: @post.gender == "Male" %>
+    <%= form.label :gender, "Female" %>
+    <%= form.radio_button :gender, "Female", checked: @post.gender == "Female" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

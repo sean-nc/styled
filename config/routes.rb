@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     member do
       get         :following, :followers
     end
-    resources     :posts,                 only: [:show, :new, :create, :destroy]
+    resources     :posts,                 only: [:show, :new, :create, :destroy, :edit, :update]
   end
   resources       :relationships,         only: [:create, :destroy]
   resources       :likes,                 only: [:create, :destroy]

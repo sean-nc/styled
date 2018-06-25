@@ -62,4 +62,12 @@ class User < ApplicationRecord
       where(conditions).first
     end
   end
+
+  def self.search(term)
+    if term
+      self.where('username ILIKE ?', "%#{term}%")
+    else
+      self.all
+    end
+  end
 end

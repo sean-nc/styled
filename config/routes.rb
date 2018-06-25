@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for      :users
   root            'static_pages#about'
   get             '/contact',             to: 'static_pages#contact'
+  get             '/add_users',           to: 'static_pages#add_users'
   resources       :users,                 only: [:index, :show] do
     member do
       get         :following, :followers

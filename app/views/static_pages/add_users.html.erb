@@ -1,0 +1,10 @@
+<%= form_tag(add_users_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
+<% if @users %>
+  <% @users.each do |u| %>
+    <li><%= u.username %></li>
+  <% end %>
+<% end %>

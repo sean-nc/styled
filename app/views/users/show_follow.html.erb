@@ -1,0 +1,15 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users follow">
+        <% @users.each do |u| %>
+          <%= u.username %> |
+          <%= link_to "View profile", u %> |
+          Posts: <%= u.posts.count %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

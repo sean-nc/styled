@@ -8,6 +8,8 @@ class StaticPagesController < ApplicationController
   end
 
   def add_users
-    @users = User.search(params[:term])
+    friends = current_user.following.search(params[:term])
+    not_friends = User.search(params[:term])
+    @users = (friends + not_friends).uniq
   end
 end

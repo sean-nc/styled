@@ -1,10 +1,27 @@
+<% if params[:term].nil? || params[:term].empty? %>
+  <h2>Please enter a username</h2>
+<% end %>
+
+<% if @users.empty? %>
+  <h2>No users matching that username</h2>
+<% end %>
+
 <%= form_tag(add_users_path, method: :get) do %>
   <%= text_field_tag :term, params[:term] %>
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 
-<% if @users %>
+<% if @users.any? %>
+  <h2>Users</h2>
   <% @users.each do |u| %>
-    <li><%= u.username %></li>
+    <li><%= u.username %>
+      <% if current_user?(u) %>
+
+      <% elsif current_user.following?(u)%>
+        - Following
+      <% else %>
+        - <%= link_to "Follow", u %>
+      <% end %>
+    </li>
   <% end %>
 <% end %>

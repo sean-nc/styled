@@ -18,7 +18,7 @@
       <% if current_user?(u) %>
 
       <% elsif current_user.following?(u)%>
-        - Following
+        - <%= link_to "Following", u %>
       <% else %>
         - <%= link_to "Follow", u %>
       <% end %>

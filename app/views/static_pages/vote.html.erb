@@ -1,0 +1,6 @@
+<% if @cards %>
+  <% @cards.each do |card| %>
+    <%= image_tag card.post.image.url if card.post.image? %>
+    <li><%= link_to card.post.user.username, card.post.user %></li>
+  <% end %>
+<% end %>

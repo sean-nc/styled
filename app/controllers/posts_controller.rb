@@ -15,6 +15,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      card = @post.cards.create(user_id: current_user.id)
+      current_user.votes.create(card_id: card.id,
+                                vote: true)
       redirect_to [current_user, @post]
       flash[:notice] = "Post was successfully created."
     else

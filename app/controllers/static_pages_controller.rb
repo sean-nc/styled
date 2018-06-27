@@ -14,6 +14,6 @@ class StaticPagesController < ApplicationController
   end
 
   def vote
-    @cards = Card.joins(:votes).where.not(user_id: current_user.id).limit(5)
+    @cards = Card.where.not(id: Vote.where(user_id: current_user.id).select(:card_id)).limit(10)
   end
 end

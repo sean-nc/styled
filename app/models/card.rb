@@ -4,5 +4,5 @@ class Card < ApplicationRecord
   has_many :votes, dependent: :destroy
   validates :user_id, presence: true
   validates :post_id, presence: true
-  default_scope { order('created_at DESC') }
+  # default_scope { order 'DESC' }
 end

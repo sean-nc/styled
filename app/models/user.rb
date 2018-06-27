@@ -46,6 +46,16 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def upvote(card)
+    self.votes.create(card_id: card.id,
+                      vote: true)
+  end
+
+  def downvote(card)
+    self.votes.create(card_id: card.id,
+                      vote: false)
+  end
+
   def login
     @login || self.username || self.email
   end

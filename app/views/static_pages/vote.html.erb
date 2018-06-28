@@ -1,5 +1,9 @@
-<% if @cards %>
+<% if @cards.any? %>
   <%= render 'static_pages/card' %>
+
+  <div class="card">
+    <%= link_to "Keep exploring", vote_path %>
+  </div>
 <% else %>
   <h2>No new posts</h2>
 <% end %>

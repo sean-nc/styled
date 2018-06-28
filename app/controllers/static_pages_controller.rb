@@ -16,4 +16,8 @@ class StaticPagesController < ApplicationController
   def vote
     @cards = Card.where.not(id: Vote.where(user_id: current_user.id).select(:card_id)).limit(2)
   end
+
+  def explore
+    @posts = Post.search(params[:term])
+  end
 end

@@ -8,4 +8,12 @@ class Post < ApplicationRecord
   validates :gender, presence: true, :inclusion => { :in => ["Male", "Female"] }
   validates :description, length: { maximum: 300 }
   validates :user_id, presence: true
+
+  def self.search(term)
+    if term
+      self.where('description ILIKE ?', "%#{term}%")
+    else
+      self.all.order("random()")
+    end
+  end
 end

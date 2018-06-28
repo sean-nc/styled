@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get             '/contact',             to: 'static_pages#contact'
   get             '/add_users',           to: 'static_pages#add_users'
   get             '/vote',                to: 'static_pages#vote'
+  get             '/explore',             to: 'static_pages#explore'
 
   resources       :users,                 only: [:index, :show] do
     member do

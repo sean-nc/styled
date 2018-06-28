@@ -78,6 +78,8 @@ class User < ApplicationRecord
   def self.search(term)
     if term
       self.where('username ILIKE ?', "%#{term}%")
+    else
+      self.all.order("random()")
     end
   end
 end

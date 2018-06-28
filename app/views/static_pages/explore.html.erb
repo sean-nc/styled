@@ -1,0 +1,10 @@
+<%= form_tag(explore_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <% if post.image? %>
+    <%= link_to image_tag(post.image.url), [post.user, post] %>
+  <% end %>
+<% end %>

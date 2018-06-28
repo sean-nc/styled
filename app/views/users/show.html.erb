@@ -4,6 +4,12 @@
   <%= render 'shared/stats' %>
 </section>
 
+<% if @user.avatar? %>
+  <%= image_tag @user.image.url %>
+<% else %>
+  Default Avatar
+<% end %>
+
 <%= @user.username %>
 
 <% if @posts %>

@@ -46,7 +46,7 @@ users.each do |user|
     card = post.cards.create!(user_id: user.id)
 
     user.votes.create!(card_id: card.id,
-                       vote: true)
+                       stylish: "Yes")
 
     2.times do |n|
       description2 = Faker::Friends.quote

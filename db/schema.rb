@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2018_06_27_030453) do
   create_table "votes", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "card_id"
-    t.boolean "vote"
+    t.string "stylish"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id", "user_id"], name: "index_votes_on_card_id_and_user_id", unique: true

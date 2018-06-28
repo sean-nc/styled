@@ -4,7 +4,7 @@ class CreateVotes < ActiveRecord::Migration[5.2]
 
       t.references :user, foreign_key: true
       t.references :card, foreign_key: true
-      t.boolean :vote
+      t.string :stylish
 
       t.timestamps
     end

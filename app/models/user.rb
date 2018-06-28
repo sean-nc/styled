@@ -47,13 +47,13 @@ class User < ApplicationRecord
   end
 
   def upvote(card)
-    self.votes.create(card_id: card.id,
-                      vote: true)
+    self.votes.create!(card_id: card.id,
+                       stylish: "Yes")
   end
 
   def downvote(card)
-    self.votes.create(card_id: card.id,
-                      vote: false)
+    self.votes.create!(card_id: card.id,
+                       stylish: "No")
   end
 
   def login

@@ -3,15 +3,15 @@ class Vote < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :card_id, presence: true
-  validates :vote, presence: true
-  scope :upvotes, -> { where(vote: true) }
-  scope :downvotes, -> { where(vote: false) }
+  validates :stylish, presence: true, :inclusion => { :in => ["Yes", "No"] }
+  scope :upvotes, -> { where(stylish: "Yes") }
+  scope :downvotes, -> { where(stylish: "No") }
 
   def upvote
-    self.vote = true
+    self.stylish = "Yes"
   end
 
   def downvote
-    self.vote = false
+    self.stylish = "No"
   end
 end

@@ -8,6 +8,7 @@ class VotesController < ApplicationController
     else
       current_user.downvote(@card)
     end
+
     respond_to do |format|
       format.html { redirect_to votes_path }
       format.js

@@ -1,0 +1,23 @@
+<!-- <% @cards.each do |card| %>
+  <div id="card_<%= card.id %>">
+
+    <% if card.post.image? %>
+      <%= link_to image_tag(card.post.image.url), [card.post.user, card.post] %>
+    <% end %>
+    <li><%= link_to card.post.user.username, card.post.user %></li>
+    <li><%= card.id %></li>
+
+    <%= form_for(card.votes.build, remote: true) do |f| %>
+      <div><%= hidden_field_tag :card_id, card.id %></div>
+
+      <%= submit_tag "Yes" %>
+
+      <%= submit_tag "No" %>
+    <% end %>
+  </div>
+<% end %> -->
+
+<% Card.where.not(id: Vote.where(user_id: current_user.id).select(:card_id)).limit(1) %>
+    $cardList.append(
+      $cardList.append('<a href="/users/' + card.user + '">' + '<img src=' + card.image + '>' + '</a>')
+<% end %>

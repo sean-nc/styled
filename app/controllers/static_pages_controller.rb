@@ -14,7 +14,7 @@ class StaticPagesController < ApplicationController
   end
 
   def vote
-    @cards = Card.where.not(id: Vote.where(user_id: current_user.id).select(:card_id)).limit(2)
+    @cards = Card.where.not(id: Vote.where(user_id: current_user.id).select(:card_id)).limit(1)
   end
 
   def explore

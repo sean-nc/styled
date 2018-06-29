@@ -1,53 +1,78 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
-    <%= f.hidden_field :avatar_cache %>
+<div class="card text-center border-dark">
+  <div class="card-header">
+   <h4>Styled Sign Up</h4>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <div id="target">
+        </div>
+        <%= f.label :avatar %>
+        <small class="text-muted">
+          - Optional
+        </small>
+          <%= f.file_field :avatar, class: "form-control-file", id: "pictureInput" %>
+          <%= f.hidden_field :avatar_cache %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %>
+        <small class="text-muted">
+          - Optional
+        </small>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <small class="text-muted">
+          Usual posted style:
+        </small>
+        <div class="form-check">
+          <%= f.label :gender_male, 'Male' %>
+          <%= f.radio_button :gender, 'Male' %>
+        </div>
+        <div class="form-check">
+          <%= f.label :gender_female, 'Female' %>
+          <%= f.radio_button :gender, 'Female' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <small class="text-muted">
+            - (<%= @minimum_password_length %> characters minimum)
+          </small>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
   </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "email" %>
+  <div class="card-footer">
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, placeholder: "Optional (maximum 300 characters)"%>
-  </div>
-
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.label :gender_male, 'Male' %>
-    <%= f.radio_button :gender, 'Male' %>
-    <%= f.label :gender_female, 'Female' %>
-    <%= f.radio_button :gender, 'Female' %><br />
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

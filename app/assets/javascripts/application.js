@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery
-//= require bootstrap-sprockets
 
 $(function() {
   $('#pictureInput').on('change', function(event) {

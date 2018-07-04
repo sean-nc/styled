@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get             '/vote',                to: 'static_pages#vote'
   get             '/explore',             to: 'static_pages#explore'
 
-  resources       :users,                 only: [:index, :show] do
+  resources       :users,                 only: :show do
     member do
       get         :following, :followers
     end

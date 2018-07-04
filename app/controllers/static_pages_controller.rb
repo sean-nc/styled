@@ -10,7 +10,7 @@ class StaticPagesController < ApplicationController
   def add_users
     friends = current_user.following.search(params[:term])
     not_friends = User.search(params[:term])
-    @users = (friends + not_friends).uniq
+    @users = (friends + not_friends).uniq.paginate(:page => params[:page], :per_page => 10)
   end
 
   def vote
@@ -18,6 +18,6 @@ class StaticPagesController < ApplicationController
   end
 
   def explore
-    @posts = Post.search(params[:term])
+    @posts = Post.search(params[:term]).paginate(:page => params[:page], :per_page => 10)
   end
 end

@@ -14,11 +14,14 @@
 
 <% if @posts %>
   <% @posts.each do |p| %>
-    <%= link_to "Show", user_post_path(@user, p) %>
-    <%= image_tag(p.image) %>
+    <%= link_to user_post_path(@user, p) do %>
+      <%= image_tag(p.image.url) %>
+    <% end %>
   <% end %>
 <% end %>
 
 <% if current_user?(@user) %>
   <%= link_to "New Post", new_user_post_path(current_user) %>
 <% end %>
+
+<%= will_paginate @posts %>

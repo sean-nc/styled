@@ -17,8 +17,6 @@
 //= require jquery
 
 $(document).ready(function() {
-
-  // Show image upload
   $('#pictureInput').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
@@ -32,13 +30,9 @@ $(document).ready(function() {
     reader.readAsDataURL(image);
     console.log(files);
   });
+});
 
-  // Hamburger nav
-  $('.hamburger').on('click', function() {
-    $('.hamburger-menu').toggle ();
-  });
-
-  // Sticky nav
+$(document).ready(function() {
   var stickyNavTop = $('.big-header-sub').offset().top;
 
   var stickyNav = function(){
@@ -59,4 +53,9 @@ $(document).ready(function() {
   $(window).scroll(function() {
     stickyNav();
   });
+});
+
+$(document).on('click', '.small-header-button', function() {
+  $(this).toggleClass('opened');
+  $('.small-header-menu').slideToggle( "slow");
 });

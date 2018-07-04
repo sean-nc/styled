@@ -1,73 +1,198 @@
+$header-breakpoint: 37.5em;
+$button-bg: #000000;
+$button-width: 2.5rem;
+$button-multiplier: 2;
+
 .header{
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.4rem;
+  }
+
   .big-header {
+    display: none
+  }
+
+  .small-header-menu {
+    display: none;
+    width: 100%;
+    text-align: center;
+    z-index: 99;
+    position: absolute;
+    background-color: white;
+    height: calc(100vh - 8rem);
+    border-bottom: 0.2rem solid black;
+
     ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 0;
-      margin: 0;
-
-      a {
-        padding: 1rem;
-        color: black;
-        text-decoration: none;
-        font-size: 1.4rem;
-        font-weight: 700;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+      position: relative;
+      top: 40%;
+      transform: translateY(-40%);
     }
 
-    .big-header-upper {
-      display: flex;
-      justify-content: center;
-      height: 10rem;
-
-      .big-header-side {
-        li {
-          margin-top: 6rem;
-        }
-      }
-
-      .big-header-image {
-        height: 100%;
-        margin: 0 2rem;
-
-        img {
-          position: relative;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-        }
-      }
+    li {
+      padding: 0.5rem;
     }
 
-    .border-top {
-      border-top: 0.6rem black solid;
-    }
-
-    .big-header-sub {
+    a {
       width: 100%;
-      background-color: white;
-      height: 5rem;
-      line-height: 5rem;
+      padding: 0.5rem 2rem;
+      text-decoration: underline;
 
-      a {
-        padding: 1rem 3rem;
-        font-weight: 500;
-        font-size: 1.6rem;
+      &:hover,
+      &:active {
+        text-decoration: none;
+        font-weight: 700;
       }
     }
   }
 
-  .sticky {
-    position: fixed;
-    width: 100%;
-    left: 0;
-    top: 0;
-    z-index: 100;
-    border-top: 0;
+  .small-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 8rem;
+    border-bottom: 0.2rem solid black;
+
+    .small-header-left {
+      padding: 2rem 0 0;
+
+      img {
+        width: 10rem;
+      }
+    }
+
+    .small-header-right {
+
+      .small-header-button {
+        width: $button-width * $button-multiplier;
+        height: 1rem * $button-multiplier;
+        cursor: pointer;
+        padding: 2rem;
+
+        span {
+          display: block;
+          position: absolute;
+          top: 3rem;
+          right: 2.5rem;
+          height: 0.15rem * $button-multiplier;
+          width: 2.5rem;
+          background: $button-bg none repeat scroll 0% 0%;
+          opacity: 1;
+          transition: all 0.25s ease-in-out 0s;
+          transform: rotate(0deg);
+          &:nth-child(1) {
+            margin-top: 0;
+          }
+          &:nth-child(2) {
+            margin-top: 0.4rem * $button-multiplier;
+            margin-right: 0;
+          }
+          &:nth-child(3) {
+            margin-top: 0.8rem * $button-multiplier;
+          }
+        }
+
+        &.opened {
+          span {
+            &:nth-child(1) {
+              transform: rotate(135deg);
+              margin-top: 0.4rem * $button-multiplier;
+            }
+            &:nth-child(2) {
+              opacity: 0;
+              right: -$button-width * 3;
+            }
+            &:nth-child(3) {
+              transform: rotate(-135deg);
+              margin-top: 0.4rem * $button-multiplier;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+  @media only screen and (min-width: $header-breakpoint) {
+
+    .small-header {
+      display: none;
+    }
+
+    .big-header {
+      display: block;
+
+      ul {
+        display: flex;
+        justify-content: center;
+
+        a {
+          padding: 1rem;
+          font-weight: 700;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .big-header-upper {
+        display: flex;
+        justify-content: center;
+        height: 10rem;
+
+        .big-header-side {
+          li {
+            margin-top: 6rem;
+          }
+        }
+
+        .big-header-image {
+          height: 100%;
+          margin: 0 2rem;
+
+          img {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+          }
+        }
+      }
+
+      .border-top {
+        border-top: 0.6rem black solid;
+      }
+
+      .big-header-sub {
+        width: 100%;
+        background-color: white;
+        height: 5rem;
+        line-height: 5rem;
+
+        a {
+          padding: 1rem 3rem;
+          font-weight: 500;
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    .sticky {
+      position: fixed;
+      width: 100%;
+      left: 0;
+      top: 0;
+      z-index: 100;
+      border-top: 0;
+    }
   }
 }

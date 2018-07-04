@@ -16,7 +16,9 @@
 //= require_tree .
 //= require jquery
 
-$(function() {
+$(document).ready(function() {
+
+  // Show image upload
   $('#pictureInput').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
@@ -29,5 +31,32 @@ $(function() {
     }
     reader.readAsDataURL(image);
     console.log(files);
+  });
+
+  // Hamburger nav
+  $('.hamburger').on('click', function() {
+    $('.hamburger-menu').toggle ();
+  });
+
+  // Sticky nav
+  var stickyNavTop = $('.big-header-sub').offset().top;
+
+  var stickyNav = function(){
+    var scrollTop = $(window).scrollTop();
+
+    if (scrollTop > stickyNavTop) {
+        $('.big-header-sub').addClass('sticky');
+        $('.big-header-sub').removeClass('border-top');
+    } else {
+        $('.big-header-sub').removeClass('sticky');
+        $('.big-header-sub').addClass('border-top');
+
+    }
+  };
+
+  stickyNav();
+
+  $(window).scroll(function() {
+    stickyNav();
   });
 });

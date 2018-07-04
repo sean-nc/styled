@@ -1,21 +1,43 @@
-<header class="navbar navbar-inverse">
-  <div class="container">
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to "Explore", explore_path %>
-          <li><%= link_to "Vote", vote_path %>
-          <li><%= link_to "Add User", add_users_path %>
-          <li><%= link_to "Profile", current_user %>
-          <li><%= link_to "Settings", edit_user_registration_path %>
-          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete  %></li>
-        <% else %>
-          <li><%= link_to "Log In", new_user_session_path %>
-          <li><%= link_to "Sign Up", new_user_registration_path %>
+<header class="header">
+  <div class="big-header">
+    <div class="big-header-upper">
+      <nav class="big-header-side">
+        <ul>
+          <li><%= link_to "About", root_path %></li>
+          <li><%= link_to "Contact", contact_path %></li>
+        </ul>
+      </nav>
+
+      <div class="big-header-image">
+        <%= link_to root_path do %>
+          <%= image_tag "small-ontrend.png" %>
         <% end %>
-        <li><%= link_to "About", root_path %></li>
-        <li><%= link_to "Contact", contact_path %></li>
-      </ul>
-    </nav>
+      </div>
+
+      <nav class="big-header-side">
+        <% if user_signed_in? %>
+          <ul>
+            <li><%= link_to "Settings", edit_user_registration_path %></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete  %></li>
+          </ul>
+        <% else %>
+          <ul>
+            <li><%= link_to "Log In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          </ul>
+        <% end %>
+      </nav>
+    </div>
+
+    <% if user_signed_in? %>
+      <nav class="big-header-sub border-top">
+        <ul>
+          <li><%= link_to "My Profile", current_user %></li>
+          <li><%= link_to "Explore", explore_path %></li>
+          <li><%= link_to "Vote", vote_path %></li>
+          <li><%= link_to "Add Friends", add_users_path %></li>
+        </ul>
+      </nav>
+    <% end %>
   </div>
 </header>

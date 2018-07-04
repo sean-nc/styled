@@ -1,3 +1,20 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Signup && Edit Form
+.form-card {
+
+  .form-image {
+    padding: 3rem 0 6rem;
+    text-align: center;
+  }
+
+  .form-gender {
+    max-width: 20rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .form-footer {
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 1.4rem;
+  }
+}

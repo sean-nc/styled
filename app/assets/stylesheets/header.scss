@@ -123,7 +123,8 @@ $button-multiplier: 2;
 
   @media only screen and (min-width: $header-breakpoint) {
 
-    .small-header {
+    .small-header,
+    .small-header-menu {
       display: none;
     }
 

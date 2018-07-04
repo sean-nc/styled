@@ -44,7 +44,6 @@ $(document).ready(function() {
     } else {
         $('.big-header-sub').removeClass('sticky');
         $('.big-header-sub').addClass('border-top');
-
     }
   };
 
@@ -57,5 +56,5 @@ $(document).ready(function() {
 
 $(document).on('click', '.small-header-button', function() {
   $(this).toggleClass('opened');
-  $('.small-header-menu').slideToggle( "slow");
+  $('.small-header-menu').slideToggle('slow');
 });

@@ -12,9 +12,9 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery
 //= require turbolinks
 //= require_tree .
-//= require jquery
 
 $(document).ready(function() {
   $('#pictureInput').on('change', function(event) {
@@ -32,27 +32,27 @@ $(document).ready(function() {
   });
 });
 
-$(document).ready(function() {
-  var stickyNavTop = $('.big-header-sub').offset().top;
+// $(document).ready(function() {
+//   var stickyNavTop = $('.big-header-sub').offset().top;
 
-  var stickyNav = function(){
-    var scrollTop = $(window).scrollTop();
+//   var stickyNav = function(){
+//     var scrollTop = $(window).scrollTop();
 
-    if (scrollTop > stickyNavTop) {
-        $('.big-header-sub').addClass('sticky');
-        $('.big-header-sub').removeClass('border-top');
-    } else {
-        $('.big-header-sub').removeClass('sticky');
-        $('.big-header-sub').addClass('border-top');
-    }
-  };
+//     if (scrollTop > stickyNavTop) {
+//         $('.big-header-sub').addClass('sticky');
+//         $('.big-header-sub').removeClass('border-top');
+//     } else {
+//         $('.big-header-sub').removeClass('sticky');
+//         $('.big-header-sub').addClass('border-top');
+//     }
+//   };
 
-  stickyNav();
+//   stickyNav();
 
-  $(window).scroll(function() {
-    stickyNav();
-  });
-});
+//   $(window).scroll(function() {
+//     stickyNav();
+//   });
+// });
 
 $(document).on('click', '.small-header-button', function() {
   $(this).toggleClass('opened');

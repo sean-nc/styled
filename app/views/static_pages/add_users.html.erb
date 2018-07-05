@@ -14,13 +14,11 @@
 <% if @users.any? %>
   <h2>Users</h2>
   <% @users.each do |u| %>
-    <li><%= u.username %>
-      <% if current_user?(u) %>
-
-      <% elsif current_user.following?(u)%>
-        - <%= link_to "Following", u %>
+    <li><%= link_to u.username, u %>
+      <% if current_user.following?(u)%>
+        - Following
       <% else %>
-        - <%= link_to "Follow", u %>
+
       <% end %>
     </li>
   <% end %>

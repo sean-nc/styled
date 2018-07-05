@@ -12,8 +12,10 @@
   <% end %>
 
   <div class="field">
+    <div id="target">
+    </div>
     <%= form.label :image %>
-    <%= form.file_field :image %>
+    <%= form.file_field :image, id: "pictureInput" %>
   </div>
 
   <div class="field">

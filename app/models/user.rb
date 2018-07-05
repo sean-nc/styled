@@ -80,7 +80,7 @@ class User < ApplicationRecord
     if term
       self.where('username ILIKE ?', "%#{term}%")
     else
-      self.all.order("random()")
+      self.all
     end
   end
 end

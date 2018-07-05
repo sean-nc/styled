@@ -1,3 +1,38 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Post Grid
+$grid-breakpoint1: 37.5em;
+$grid-breakpoint2: 56.25em;
+$grid-item-size: 29rem;
+$grid-size: 30rem;
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  .grid-item {
+    margin: 0.5rem;
+
+    img, a {
+      width: 100%;
+      display: block;
+    }
+  }
+}
+
+@media only screen and (min-width: $grid-breakpoint1) {
+  .grid {
+    max-width: $grid-size * 2;
+
+    .grid-item {
+      width: $grid-item-size;
+      height: $grid-item-size;
+    }
+  }
+}
+
+@media only screen and (min-width: $grid-breakpoint2) {
+  .grid {
+    max-width: $grid-size * 3;
+  }
+}

@@ -1,24 +1,33 @@
-
 <% if current_user?(@user) %>
   <%= link_to "New Post", new_user_post_path(current_user) %>
 <% end %>
 
+<div class="user-show-info">
+  <div>
+    <% if @user.avatar? %>
+      <%= image_tag @user.image.url %>
+    <% else %>
+      <%= image_tag 'default-avatar' %>
+    <% end %>
+  </div>
+
+  <div class="user-show-info-side">
+    <h2><%= @user.username %></h2>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </div>
+</div>
+
+<div class="user-show-description">
+  <strong>Description:</strong>
+  <%= @user.description %>
+</div>
+
 <%= render 'follow_form' if user_signed_in? %>
 
-<section class="stats">
-  <%= render 'shared/stats' %>
-</section>
-
-<% if @user.avatar? %>
-  <%= image_tag @user.image.url %>
-<% else %>
-  Default Avatar
-<% end %>
-
-<%= @user.username %>
-
 <% if @posts %>
-  <div id="my-posts">
+  <div id="my-posts" class="grid">
     <%= render @posts %>
   </div>
 <% else %>

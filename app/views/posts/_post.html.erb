@@ -1,3 +1,5 @@
-<%= link_to user_post_path(@user, post) do %>
-  <%= image_tag(post.image.url) %>
-<% end %>
+<div class="grid-item">
+  <%= link_to user_post_path(@user, post) do %>
+    <%= image_tag(post.image.url) %>
+  <% end %>
+</div>

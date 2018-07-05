@@ -32,7 +32,40 @@ followers.each { |follower| follower.follow(user) }
 
 #### Posts && Cards && Clothing
 users = User.all
-users = users[1..10]
+users = users[1..5]
+
+sean = User.find(1)
+
+5.times do |n|
+  5.times do |n|
+    image = File.open(File.join(Rails.root, "public/test_images/#{n+1}.png"))
+    description = Faker::Seinfeld.quote
+
+    post = sean.posts.create!(image: image,
+                      gender: sean.gender,
+                      description: description)
+
+    card = post.cards.create!(user_id: sean.id)
+
+    sean.votes.create!(card_id: card.id,
+                       stylish: "Yes")
+
+    2.times do |n|
+      description2 = Faker::Friends.quote
+      url = "https://amazon.com"
+      if n.to_i.even?
+        title = "Shirt"
+      else
+        title = "Pants"
+      end
+
+      post.clothing_articles.create!(user_id: sean.id,
+                                    title: title,
+                                    description: description2,
+                                    url: url)
+    end
+  end
+end
 
 users.each do |user|
   3.times do |n|

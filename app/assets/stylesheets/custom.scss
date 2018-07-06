@@ -8,14 +8,10 @@ body {
 }
 
 .main-container {
-  padding: 6rem 1rem;
+  padding: 6rem 2rem;
   min-height: 100vh;
   max-width: 96rem;
   margin: 0 auto;
-
-  @media only screen and (min-width: 37.5em) {
-    padding: 6rem 0;
-  }
 }
 
 // UI Kit Customize

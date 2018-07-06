@@ -3,10 +3,14 @@
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 
-<% @posts.each do |post| %>
-  <% if post.image? %>
-    <%= link_to image_tag(post.image.url), [post.user, post] %>
-  <% end %>
+<% if @posts %>
+  <div id="my-posts" class="grid">
+    <%= render @posts %>
+  </div>
+<% else %>
+  <h2>No posts</h2>
 <% end %>
 
-<%= will_paginate @posts %>
+<div id="infinite-scrolling" style="display: none;">
+  <%= will_paginate @posts %>
+</div>

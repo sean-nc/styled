@@ -6,7 +6,7 @@
   <h2>No users matching that username</h2>
 <% end %>
 
-<%= form_tag(add_users_path, method: :get) do %>
+<%= form_tag(find_users_path, method: :get) do %>
   <%= text_field_tag :term, params[:term] %>
   <%= submit_tag 'Search', name: nil %>
 <% end %>

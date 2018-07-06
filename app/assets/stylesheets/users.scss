@@ -4,14 +4,19 @@
   margin: 3rem auto;
   text-align: center;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: center;
 
+  img {
+    width: 20rem;
+    height: 20rem;
+  }
+
   .user-show-info-side {
-    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 3rem 0 0;
   }
 }
 
@@ -27,6 +32,30 @@
 }
 
 .user-show-description {
-  max-width: 50rem;
-  margin: 0 auto 5rem;
+  max-width: 60rem;
+  margin: 2rem auto 0;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  a, div {
+    padding: 0.5rem;
+  }
+}
+
+.user-show-button {
+  width: 20rem;
+  margin: 5rem auto;
+  display: block;
+}
+
+.user-new-post-button {
+    margin: 5rem auto 1rem;
+}
+
+.user-edit-profile-button {
+    margin: 1rem auto 5rem;
 }

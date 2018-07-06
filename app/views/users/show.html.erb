@@ -1,11 +1,7 @@
-<% if current_user?(@user) %>
-  <%= link_to "New Post", new_user_post_path(current_user) %>
-<% end %>
-
 <div class="user-show-info">
   <div>
     <% if @user.avatar? %>
-      <%= image_tag @user.image.url %>
+      <%= image_tag @user.avatar.url %>
     <% else %>
       <%= image_tag 'default-avatar' %>
     <% end %>
@@ -19,12 +15,21 @@
   </div>
 </div>
 
-<div class="user-show-description">
-  <strong>Description:</strong>
-  <%= @user.description %>
-</div>
+<% unless @user.description.nil? %>
+  <div class="user-show-description">
+    <strong>Description:</strong>
+    <%= @user.description %>
+  </div>
+<% end %>
 
-<%= render 'follow_form' if user_signed_in? %>
+<% if current_user?(@user) %>
+  <%= link_to "New Post", new_user_post_path(current_user),
+              class: "uk-button uk-button-primary user-show-button user-new-post-button" %>
+  <%= link_to "Edit Profile", edit_user_registration_path,
+              class: "class: uk-button uk-button-secondary user-show-button user-edit-profile-button" %>
+<% else %>
+  <%= render 'follow_form' if user_signed_in? %>
+<% end %>
 
 <% if @posts %>
   <div id="my-posts" class="grid">

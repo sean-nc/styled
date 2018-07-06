@@ -149,6 +149,7 @@ $button-multiplier: 2;
         display: flex;
         justify-content: center;
         height: 10rem;
+        border-bottom: 0.6rem solid black;
 
         .big-header-side {
           li {
@@ -169,10 +170,6 @@ $button-multiplier: 2;
         }
       }
 
-      .border-top {
-        border-top: 0.6rem black solid;
-      }
-
       .big-header-sub {
         width: 100%;
         background-color: white;
@@ -186,14 +183,5 @@ $button-multiplier: 2;
         }
       }
     }
-
-    // .sticky {
-    //   position: fixed;
-    //   width: 100%;
-    //   left: 0;
-    //   top: 0;
-    //   z-index: 100;
-    //   border-top: 0;
-    // }
   }
 }

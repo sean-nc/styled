@@ -32,28 +32,6 @@ $(document).ready(function() {
   });
 });
 
-// $(document).ready(function() {
-//   var stickyNavTop = $('.big-header-sub').offset().top;
-
-//   var stickyNav = function(){
-//     var scrollTop = $(window).scrollTop();
-
-//     if (scrollTop > stickyNavTop) {
-//         $('.big-header-sub').addClass('sticky');
-//         $('.big-header-sub').removeClass('border-top');
-//     } else {
-//         $('.big-header-sub').removeClass('sticky');
-//         $('.big-header-sub').addClass('border-top');
-//     }
-//   };
-
-//   stickyNav();
-
-//   $(window).scroll(function() {
-//     stickyNav();
-//   });
-// });
-
 $(document).on('click', '.small-header-button', function() {
   $(this).toggleClass('opened');
   $('.small-header-menu').slideToggle('slow');

@@ -63,7 +63,7 @@
     </div>
 
     <% if user_signed_in? %>
-      <nav class="big-header-sub border-top">
+      <nav class="big-header-sub" uk-sticky="offset: 0;">
         <ul>
           <li><%= link_to "My Profile", current_user %></li>
           <li><%= link_to "Explore", explore_path %></li>

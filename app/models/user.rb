@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  extend FriendlyId
+  friendly_id :username, use: :slugged
   mount_uploader :avatar, AvatarUploader
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",

@@ -59,3 +59,32 @@
 .user-edit-profile-button {
     margin: 1rem auto 5rem;
 }
+
+// User Card
+.user-card {
+  display: flex;
+  list-style: none;
+  margin: 2rem auto;
+  max-width: 30rem;
+
+  .user-card-avatar {
+    img {
+      max-width: 10rem;
+      display: block;
+    }
+  }
+
+  .user-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
+
+    p {
+      margin: 0;
+      text-align: center;
+      font-size: 1.4rem;
+    }
+  }
+}

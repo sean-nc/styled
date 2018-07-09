@@ -1,11 +1,19 @@
-<li>
- <% if user.avatar? %>
-    <%= image_tag user.avatar.url %>
-  <% else %>
-    <%= image_tag 'default-avatar' %>
-  <% end %>
-  <%= link_to user.username, user %>
-  <% if current_user.following?(user)%>
-    - Following
-  <% end %>
+<li class="user-card uk-card-default">
+  <div class="user-card-avatar">
+    <% if user.avatar? %>
+      <%= image_tag user.avatar.url %>
+    <% else %>
+      <%= image_tag 'default-avatar' %>
+    <% end %>
+  </div>
+
+  <div class="user-card-info">
+    <p>
+      <% if current_user.following?(user) %>
+        <span uk-icon="users"></span>
+      <% end %>
+      <%= user.username %>
+    </p>
+    <%= link_to "View Profile", user, class: "uk-button uk-button-default" %>
+  </div>
 </li>

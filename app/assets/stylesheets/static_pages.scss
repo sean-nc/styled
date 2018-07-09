@@ -13,3 +13,20 @@
   }
 }
 
+.voting-card {
+  position: absolute;
+  width: 100%;
+  max-width: 40rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+
+  .voting-buttons {
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin: 0.5rem;
+    }
+  }
+}

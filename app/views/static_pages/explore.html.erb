@@ -1,6 +1,9 @@
 <div class="uk-margin-large search-form">
   <%= form_tag(explore_path, method: :get) do %>
-    <%= text_field_tag :term, params[:term], class: "uk-input" %>
+    <div class="uk-inline search-bar">
+      <a class="uk-form-icon" href="#" uk-icon="icon: search"></a>
+      <%= text_field_tag :term, params[:term], class: "uk-input" %>
+    </div>
     <%= submit_tag 'Search', name: nil, class: "uk-button uk-button-default search-submit" %>
   <% end %>
 </div>

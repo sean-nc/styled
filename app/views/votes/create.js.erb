@@ -1,3 +1,8 @@
-$("#card_<%= @card.id %>").fadeOut(400, function(){
-  $(this).remove();
-});
+<% if @cards.next_page %>
+  $("#card_<%= @card.id %>").fadeOut(400, function(){
+    $(this).remove();
+  });
+  $('.pagination').replaceWith('<%= j will_paginate @users %>');
+<% else %>
+  <% render 'vote' %>
+<% end %>

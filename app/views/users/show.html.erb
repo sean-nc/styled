@@ -31,12 +31,12 @@
   <%= render 'follow_form' if user_signed_in? %>
 <% end %>
 
-<% if @posts %>
+<% if @posts.any? %>
   <div id="my-posts" class="grid">
     <%= render @posts %>
   </div>
 <% else %>
-  <h2>no posts</h2>
+  <h1 class="uk-heading-line uk-text-center"><span>Sorry, no posts.</span></h1>
 <% end %>
 
 

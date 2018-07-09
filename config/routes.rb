@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources   :clothing_articles,     only: [:new, :create, :destroy, :edit, :update]
     end
   end
+
   resources       :relationships,         only: [:create, :destroy]
   resources       :likes,                 only: [:create, :destroy]
   resources       :votes,                 only: :create

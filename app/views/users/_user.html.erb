@@ -1,0 +1,11 @@
+<li>
+ <% if user.avatar? %>
+    <%= image_tag user.avatar.url %>
+  <% else %>
+    <%= image_tag 'default-avatar' %>
+  <% end %>
+  <%= link_to user.username, user %>
+  <% if current_user.following?(user)%>
+    - Following
+  <% end %>
+</li>

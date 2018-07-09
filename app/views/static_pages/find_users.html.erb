@@ -1,18 +1,18 @@
 <div class="uk-margin-large search-form">
-  <%= form_tag(explore_path, method: :get) do %>
+  <%= form_tag(find_users_path, method: :get) do %>
     <%= text_field_tag :term, params[:term], class: "uk-input" %>
     <%= submit_tag 'Search', name: nil, class: "uk-button uk-button-default search-submit" %>
   <% end %>
 </div>
 
-<% if @posts.any? %>
-  <div id="my-posts" class="grid">
-    <%= render @posts %>
+<% if @users.any? %>
+  <div id="my-users">
+    <%= render @users %>
   </div>
 <% else %>
-  <h1 class="uk-heading-line uk-text-center"><span>Sorry, no posts.</span></h1>
+  <h1 class="uk-heading-line uk-text-center"><span>Sorry, no users match that search.</span></h1>
 <% end %>
 
 <div id="infinite-scrolling" style="display: none;">
-  <%= will_paginate @posts %>
+  <%= will_paginate @users %>
 </div>

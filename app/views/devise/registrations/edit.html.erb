@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <div class="avatar-button">
-        <label for="pictureInput" class="uk-button uk-button-default">Choose Avatar</label>
+        <label for="pictureInput" class="uk-button uk-button-default">Profile Picture</label>
         <%= f.file_field :avatar, id: "pictureInput" %>
         <%= f.hidden_field :avatar_cache %>
       </div>
@@ -97,5 +97,4 @@
               data: { confirm: "Are you sure?" }, method: :delete,
               class: "uk-button uk-button-danger" %>
   </div>
-
 </div>

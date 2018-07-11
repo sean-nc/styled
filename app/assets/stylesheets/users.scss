@@ -1,4 +1,4 @@
-//Sign Up Form
+//Sign Up and Edit Form
 .user-form {
   max-width: 60rem;
   margin: 0 auto;
@@ -80,6 +80,11 @@
       padding: 0;
     }
   }
+}
+
+// Log In Form
+.user-login {
+  max-width: 30rem;
 }
 
 // Show

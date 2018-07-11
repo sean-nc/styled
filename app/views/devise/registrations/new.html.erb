@@ -21,54 +21,42 @@
 
       <div class="uk-margin">
         <%= f.label :email, class: "uk-form-label" %>
-        <div class="uk-form-control">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input" %>
-        </div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input" %>
       </div>
 
       <div class="uk-margin">
         <%= f.label :username, class: "uk-form-label" %>
-        <div class="uk-form-control">
-          <%= f.text_field :username, autofocus: true, class: "uk-input" %>
-        </div>
+        <%= f.text_field :username, autofocus: true, class: "uk-input" %>
       </div>
 
       <div class="uk-margin">
         <%= f.label :description, class: "uk-form-label" %>
-        <div class="uk-form-control">
-          <%= f.text_area :description, class: "uk-textarea", size: "10x5",
-                          placeholder: "optional" %>
-        </div>
+        <%= f.text_area :description, class: "uk-textarea", size: "10x5",
+                        placeholder: "optional" %>
       </div>
 
       <div class="uk-margin">
         <label class="uk-form-label">Usual gender posted</label>
-        <div class="uk-form-control">
-          <div>
-            <%= f.label :gender_male, 'Male', class: "radio-label" %>
-            <%= f.radio_button :gender, 'Male', class: "uk-radio" %>
-          </div>
+        <div>
+          <%= f.label :gender_male, 'Male', class: "radio-label" %>
+          <%= f.radio_button :gender, 'Male', class: "uk-radio" %>
+        </div>
 
-          <div>
-            <%= f.label :gender_female, 'Female', class: "radio-label" %>
-            <%= f.radio_button :gender, 'Female', class: "uk-radio" %>
-          </div>
+        <div>
+          <%= f.label :gender_female, 'Female', class: "radio-label" %>
+          <%= f.radio_button :gender, 'Female', class: "uk-radio" %>
         </div>
       </div>
 
       <div class="uk-margin">
-        <div class="uk-form-control">
-          <%= f.label :password, class: "uk-form-label" %>
-          <%= f.password_field :password, autocomplete: "off", class: "uk-input",
-                                placeholder: "minimum length #{@minimum_password_length}" %>
-        </div>
+        <%= f.label :password, class: "uk-form-label" %>
+        <%= f.password_field :password, autocomplete: "off", class: "uk-input",
+                              placeholder: "minimum length #{@minimum_password_length}" %>
       </div>
 
       <div class="uk-margin">
-        <div class="uk-form-control">
-          <%= f.label :password_confirmation, class: "uk-form-label" %>
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: "uk-input" %>
-        </div>
+        <%= f.label :password_confirmation, class: "uk-form-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "uk-input" %>
       </div>
 
       <div class="uk-margin">

@@ -1,74 +1,101 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="uk-form-stacked user-form uk-card uk-card-default">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-  <div class="field">
-    <% if current_user.avatar.url.present? %>
-      <%= image_tag(current_user.avatar.url) %>
-      <%= f.label :remove_avatar %>
-      <%= f.check_box :remove_avatar %>
-    <% else %>
-      <%= f.label :avatar %>
-      <%= f.file_field :avatar %>
-      <%= f.hidden_field :avatar_cache %>
-    <% end %>
+  <div class="uk-card-header">
+    <h2 class="uk-card-title"><span uk-icon="icon: user"></span>Edit Profile</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="uk-card-body">
+    <div class="avatar-card">
+      <div id="target">
+        <% if current_user.avatar.url.present? %>
+          <%= image_tag(current_user.avatar.url) %>
+        <% else %>
+          <%= image_tag 'default-avatar' %>
+        <% end %>
+      </div>
+      <div class="avatar-button">
+        <label for="pictureInput" class="uk-button uk-button-default">Choose Avatar</label>
+        <%= f.file_field :avatar, id: "pictureInput" %>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, placeholder: "Optional (maximum 300 characters)"%>
-  </div>
+  <div class="uk-margin">
+      <%= f.label :email, class: "uk-form-label" %>
+      <div class="uk-form-control">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.label :gender_male, 'Male' %>
-    <%= f.radio_button :gender, 'Male' %>
-    <%= f.label :gender_female, 'Female' %>
-    <%= f.radio_button :gender, 'Female' %><br />
-  </div>
+    <div class="uk-margin">
+      <%= f.label :username, class: "uk-form-label" %>
+      <div class="uk-form-control">
+        <%= f.text_field :username, autofocus: true, class: "uk-input" %>
+      </div>
+    </div>
 
+  <div class="uk-margin">
+      <%= f.label :description, class: "uk-form-label" %>
+      <div class="uk-form-control">
+        <%= f.text_area :description, class: "uk-textarea", size: "10x5",
+                        placeholder: "optional" %>
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <label class="uk-form-label">Usual gender posted</label>
+      <div class="uk-form-control">
+        <div>
+          <%= f.label :gender_male, 'Male', class: "radio-label" %>
+          <%= f.radio_button :gender, 'Male', class: "uk-radio" %>
+        </div>
+
+        <div>
+          <%= f.label :gender_female, 'Female', class: "radio-label" %>
+          <%= f.radio_button :gender, 'Female', class: "uk-radio" %>
+        </div>
+      </div>
+    </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <div class="uk-margin">
+      <div class="uk-form-control">
+        <%= f.label :password, class: "uk-form-label" %>
+        <%= f.password_field :password, autocomplete: "off", class: "uk-input",
+                              placeholder: "minimum length #{@minimum_password_length}" %>
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <div class="uk-form-control">
+        <%= f.label :password_confirmation, class: "uk-form-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "uk-input" %>
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <div class="uk-form-control">
+        <%= f.label :current_password, class: "uk-form-label" %>
+        <i class="uk-form-label">(we need your current password to confirm your changes)</i>
+        <%= f.password_field :current_password, autocomplete: "off", class: "uk-input" %>
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <%= f.submit "Update", class: "uk-button uk-button-primary" %>
+    </div>
+  <% end %>
+
+  <%= button_to "Cancel my account", registration_path(resource_name),
+              data: { confirm: "Are you sure?" }, method: :delete,
+              class: "uk-button uk-button-danger" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

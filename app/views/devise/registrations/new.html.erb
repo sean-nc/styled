@@ -1,66 +1,83 @@
-<div class="uk-form-stacked">
+<%= devise_error_messages! %>
+
+<div class="uk-form-stacked user-form uk-card uk-card-default">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
 
-    <div id="target">
+    <div class="uk-card-header">
+      <h2 class="uk-card-title"><span uk-icon="icon: user"></span>Sign Up</h2>
     </div>
-    <%= f.label :avatar, "avatar", class: "uk-form-label" %>
-    <%= f.file_field :avatar, id: "pictureInput" %>
-    <%= f.hidden_field :avatar_cache %>
 
-    <div class="uk-margin">
-      <%= f.label :email, "email *", class: "uk-form-label" %>
-      <div class="uk-form-control">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input" %>
+    <div class="uk-card-body">
+      <div class="avatar-card">
+        <div id="target">
+          <%= image_tag 'default-avatar' %>
+        </div>
+        <div class="avatar-button">
+          <label for="pictureInput" class="uk-button uk-button-default">Choose Avatar</label>
+          <%= f.file_field :avatar, id: "pictureInput" %>
+          <%= f.hidden_field :avatar_cache %>
+        </div>
       </div>
-    </div>
 
-    <div class="uk-margin">
-      <%= f.label :username, "username *", class: "uk-form-label" %>
-      <div class="uk-form-control">
-        <%= f.text_field :username, autofocus: true, class: "uk-input" %>
+      <div class="uk-margin">
+        <%= f.label :email, class: "uk-form-label" %>
+        <div class="uk-form-control">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input" %>
+        </div>
       </div>
-    </div>
 
-    <div class="uk-margin">
-      <%= f.label :description, "description", class: "uk-form-label" %>
-      <div class="uk-form-control">
-        <%= f.text_area :description, size: "30x10", class: "uk-textarea",
-                        placeholder: "optional" %>
+      <div class="uk-margin">
+        <%= f.label :username, class: "uk-form-label" %>
+        <div class="uk-form-control">
+          <%= f.text_field :username, autofocus: true, class: "uk-input" %>
+        </div>
       </div>
-    </div>
 
-    <div class="uk-margin">
-      <label class="uk-form-label">usual gender posted *</label>
-      <div class="uk-form-control">
-        <%= f.label :gender_male, 'Male' %>
-        <%= f.radio_button :gender, 'Male', class: "uk-radio" %>
-
-        <%= f.label :gender_female, 'Female' %>
-        <%= f.radio_button :gender, 'Female', class: "uk-radio" %>
+      <div class="uk-margin">
+        <%= f.label :description, class: "uk-form-label" %>
+        <div class="uk-form-control">
+          <%= f.text_area :description, class: "uk-textarea", size: "10x5",
+                          placeholder: "optional" %>
+        </div>
       </div>
-    </div>
 
-    <div class="uk-margin">
-      <div class="uk-form-control">
-        <%= f.label :password, "password *", class: "uk-form-label" %>
-        <%= f.password_field :password, autocomplete: "off", class: "uk-input",
-                              placeholder: "minimum length #{@minimum_password_length}" %>
+      <div class="uk-margin">
+        <label class="uk-form-label">Usual gender posted</label>
+        <div class="uk-form-control">
+          <div>
+            <%= f.label :gender_male, 'Male', class: "radio-label" %>
+            <%= f.radio_button :gender, 'Male', class: "uk-radio" %>
+          </div>
+
+          <div>
+            <%= f.label :gender_female, 'Female', class: "radio-label" %>
+            <%= f.radio_button :gender, 'Female', class: "uk-radio" %>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="uk-margin">
-      <div class="uk-form-control">
-        <%= f.label :password_confirmation, "password confirmation *", class: "uk-form-label" %>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "uk-input" %>
+      <div class="uk-margin">
+        <div class="uk-form-control">
+          <%= f.label :password, class: "uk-form-label" %>
+          <%= f.password_field :password, autocomplete: "off", class: "uk-input",
+                                placeholder: "minimum length #{@minimum_password_length}" %>
+        </div>
       </div>
-    </div>
 
-    <div class="uk-margin">
-      <%= f.submit "Sign up", class: "uk-button uk-button-default" %>
-    </div>
-  <% end %>
-  <div class="uk-margin">
+      <div class="uk-margin">
+        <div class="uk-form-control">
+          <%= f.label :password_confirmation, class: "uk-form-label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "uk-input" %>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <%= f.submit "Sign up", class: "uk-button uk-button-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="uk-card-footer">
     <%= render "devise/shared/links" %>
   </div>
 </div>

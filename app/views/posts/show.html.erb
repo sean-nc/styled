@@ -1,23 +1,66 @@
-<%= image_tag @post.image.url if @post.image? %>
-<p><%= @post.description %></p>
+<div class="post-show">
+  <div class="post-show-info">
+    <% if @post.image? %>
+      <%= image_tag @post.image.url %>
+    <% end %>
 
-<p id="likes"><%= @post.likes.count %></p>
-<%= render 'like_form' %>
+    <span class="uk-inline"><%= render 'like_form' %></span>
+    <span id="likes" class="uk-inline"><%= @post.likes.count %>
+      <% if @post.likes.count == 1 %>
+        like
+      <% else %>
+        likes
+      <% end %>
+    </span>
 
-<% @post.clothing_articles.each do |c| %>
-  <p><%= c.title %></p>
-  <p><%= c.description %></p>
-  <%= link_to 'Buy', c.url, class: "btn btn-primary" %>
-  <% if current_user?(@user) %>
-    <%= link_to 'Destroy', [current_user, @post, c], method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%= link_to 'Edit', edit_user_post_clothing_article_path(current_user, @post, c) %><br />
+    <p><%= @post.description %></p>
+
+    <% if current_user?(@user) %>
+      <div class="uk-margin">
+        <%= link_to 'Destroy Post', [current_user, @post], method: :delete,
+                    data: { confirm: 'Are you sure?' }, class: "uk-button uk-button-danger" %>
+      </div>
+
+      <div>
+        <%= link_to 'Edit Post', edit_user_post_path(current_user, @post), class: "uk-button uk-button-default" %>
+      </div>
+
+      <div class="uk-margin">
+        <%= link_to 'Add Clothing', new_user_post_clothing_article_path(current_user, @post),
+                  class: "uk-button uk-button-default" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @post.clothing_articles.any? %>
+    <h4 class="clothing-header">Clothing</h4>
+
+    <% @post.clothing_articles.each do |clothing| %>
+      <div class=" clothing-article-card uk-card">
+
+        <div class="uk-card-body">
+
+          <h4 class="uk-card-title clothing-title"><%= clothing.title %></h4>
+
+          <p class="clothing-description"><%= clothing.description %></p>
+
+          <div class="clothing-buttons uk-margin">
+            <div>
+              <%= link_to "Buy Now", clothing.url, target:"_blank",
+                          class: "uk-button uk-button-primary" %>
+            </div>
+
+            <% if current_user?(@user) %>
+              <div class="uk-margin">
+                <%= link_to 'Destroy', [current_user, @post, clothing], method: :delete,
+                            data: { confirm: 'Are you sure?' }, class: "uk-button uk-button-danger" %>
+                <%= link_to 'Edit', edit_user_post_clothing_article_path(current_user, @post, clothing),
+                            class: "uk-button uk-button-default" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-
-<%= link_to 'Back', @user %>
-
-<% if current_user?(@user) %>
-  <%= link_to 'Destroy', [current_user, @post], method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to 'Edit', edit_user_post_path(current_user, @post) %>
-  <%= link_to 'Add Clothing', new_user_post_clothing_article_path(current_user, @post) %>
-<% end %>
+</div>

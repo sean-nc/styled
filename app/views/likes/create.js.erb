@@ -1,2 +1,2 @@
 $("#like_form").html("<%= escape_javascript(render('posts/unlike')) %>");
-$("#likes").html('<%= @post.likes.count %>');
+$("#likes").html('<%= @post.likes.count %> <% if @post.likes.count == 1 %>like<% else %>likes<% end %>');

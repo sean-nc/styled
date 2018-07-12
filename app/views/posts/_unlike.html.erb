@@ -2,5 +2,8 @@
              html: { method: :delete },
              remote: true) do |f| %>
   <div><%= hidden_field_tag :post_id, @post.id %></div>
-  <%= f.submit "Unlike" %>
+  <div class="uk-inline">
+    <span class="uk-form-icon unlike-heart" uk-icon="icon: heart"></span>
+    <%= f.submit "", class: "uk-input uk-button like-button" %>
+  </div>
 <% end %>

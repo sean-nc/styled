@@ -1,3 +1,70 @@
+.post-show {
+  max-width: 60rem;
+  margin: 0 auto;
+
+  .post-show-info {
+    font-size: 1.4rem;
+    padding: 0 0 4rem;
+
+    p {
+      padding: 0 1rem;
+    }
+
+    img {
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}
+
+// Clothing Article Card
+.clothing-header {
+  font-size: 1.8rem;
+}
+
+.clothing-article-card {
+  margin-left: auto;
+  margin-right: auto;
+
+  &:nth-child(even) {
+    background-color: darken(white, 4);
+  }
+
+  &:nth-child(odd) {
+    border-top: darken(white, 10) 0.1rem solid;
+    border-bottom: darken(white, 10) 0.1rem solid;
+  }
+
+  .clothing-title {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  .clothing-description {
+    font-size: 1.4rem;
+  }
+}
+
+// Like/Unlike
+.like-button {
+  margin: 0;
+  padding: 0;
+}
+
+.unlike-heart,
+.like-heart {
+  svg {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.unlike-heart {
+  path {
+    fill: #f0506e;
+  }
+}
+
 // Post Grid
 $grid-breakpoint1: 40em;
 $grid-breakpoint2: 58.75rem;

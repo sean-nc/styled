@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :logged_in?, only: [:add_users, :vote]
+  before_action :logged_in?, only: [:find_users, :vote, :explore]
 
   def about
   end

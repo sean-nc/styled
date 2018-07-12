@@ -16,6 +16,6 @@
   <h1 class="uk-heading-line uk-text-center"><span>Sorry, no posts.</span></h1>
 <% end %>
 
-<div id="infinite-scrolling" style="display: none;">
-  <%= will_paginate @posts %>
+<div id="infinite-scrolling">
+  <%= will_paginate @posts, style: "color: white;" %>
 </div>

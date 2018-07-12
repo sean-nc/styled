@@ -4,7 +4,10 @@ class ClothingArticle < ApplicationRecord
   belongs_to :post
   validates :user_id, presence: true
   validates :post_id, presence: true
-  validates :title, presence: true
+  validates :title, presence: true, :inclusion => {
+              :in => ["Shirt", "Pants", "Shorts", "Dress", "Skirt", "Suit",
+                      "Sweater", "Footwear", "Outerwear", "Headwear", "Accessory"]
+            }
   validates :description, presence: true, length: { maximum: 300 }
   validates :url, presence: true, format: { with: URL_REGEXP, message: 'is invalid' }
 end

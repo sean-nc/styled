@@ -13,9 +13,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div>
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.select(:title, options_for_select([
+      ['Pants'], ['Shorts'], ['Dress'], ['Skirt'], ['Shirt'], ['Sweater'],
+      ['Outerwear'], ['Footwear'], ['Headwear'], ['Accessory'], ['Suit'],
+    ], 'Shirt')) %>
   </div>
 
   <div class="field">

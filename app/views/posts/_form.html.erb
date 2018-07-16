@@ -1,36 +1,52 @@
-<%= form_with(model: [current_user, post], local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="uk-form-stacked user-form uk-card uk-card-default">
+  <%= form_with(model: [current_user, post], local: true) do |form| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="uk-card-header">
+      <h2 class="uk-card-title"><span uk-icon="icon: image"></span>New Post</h2>
+    </div>
+
+    <div class="uk-card-body">
+      <div class="avatar-card">
+        <div id="target">
+        </div>
+        <div class="avatar-button">
+          <label for="pictureInput" class="uk-button uk-button-default">Image</label>
+          <%= form.file_field :image, id: "pictureInput" %>
+          <%= form.hidden_field :image_cache %>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <%= form.label :description, class: "uk-form-label" %>
+        <%= form.text_area :description, class: "uk-textarea", size: "10x5" %>
+      </div>
+
+      <div class=uk-margin">
+        <div>
+          <%= form.label :gender, "Male", class: "radio-label" %>
+          <%= form.radio_button :gender, "Male", checked: current_user.gender == "Male",
+                                class: "uk-radio" %>
+        </div>
+        <div>
+          <%= form.label :gender, "Female", class: "radio-label" %>
+          <%= form.radio_button :gender, "Female", checked: current_user.gender == "Female",
+                                class: "uk-radio" %>
+        </div>
+      </div>
+      <div class="uk-margin">
+        <%= form.submit class: "uk-button uk-button-primary" %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <div id="target">
-    </div>
-    <%= form.label :image %>
-    <%= form.file_field :image, id: "pictureInput" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :gender, "Male" %>
-    <%= form.radio_button :gender, "Male", checked: current_user.gender == "Male" %>
-    <%= form.label :gender, "Female" %>
-    <%= form.radio_button :gender, "Female", checked: current_user.gender == "Female" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

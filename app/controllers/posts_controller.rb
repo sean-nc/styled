@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :destroy]
+  before_action :set_post, only: [:show, :destroy, :edit, :update]
   before_action :correct_user?, only: :destroy
   before_action :logged_in?
 
@@ -30,13 +30,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find_by(user_id: params[:user_id],
-                         id: params[:id])
   end
 
   def update
-    @post = Post.find_by(user_id: params[:user_id],
-                         id: params[:id])
     if @post.update_attributes(post_params)
       flash[:success] = "Post updated"
       redirect_to [current_user, @post]

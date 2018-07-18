@@ -13,7 +13,7 @@ class Post < ApplicationRecord
     if term
       self.where('description ILIKE ?', "%#{term}%").order("random()")
     else
-      self.all
+      self.all.order("random()")
     end
   end
 end

@@ -1,17 +1,18 @@
-<div class="uk-form-stacked user-form uk-card uk-card-default">
-  <%= form_with(model: [current_user, post], local: true) do |form| %>
-    <% if post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-        <ul>
+<%= form_with(model: [current_user, post], local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <ul>
         <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <div class="uk-alert-danger" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <%= message %>
+          </div>
         <% end %>
-        </ul>
-      </div>
-    <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <div class="uk-form-stacked user-form uk-card uk-card-default">
     <div class="uk-card-header">
       <h2 class="uk-card-title"><span uk-icon="icon: image"></span>New Post</h2>
     </div>

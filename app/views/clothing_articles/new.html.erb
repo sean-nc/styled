@@ -1,18 +1,19 @@
-<div class="clothing-article-form">
-  <%= image_tag @post.image.url if @post.image? %>
-
-  <%= form_for([current_user, @post, @clothing_article]) do |form| %>
-    <% if @clothing_article.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@clothing_article.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-        <ul>
-        <% @clothing_article.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<%= form_for([current_user, @post, @clothing_article]) do |form| %>
+  <% if @clothing_article.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <div class="uk-alert-danger" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <%= message %>
+          </div>
         <% end %>
-        </ul>
-      </div>
-    <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="clothing-article-form">
+    <%= image_tag @post.image.url if @post.image? %>
 
     <div class="uk-card uk-card-default uk-form-stacked uk-margin">
       <div class="uk-card-header">

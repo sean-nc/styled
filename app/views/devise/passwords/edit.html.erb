@@ -1,25 +1,33 @@
-<h2>Change your password</h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+<div class="uk-form-stacked user-form uk-card uk-card-default">
+  <div class="uk-card-header">
+    <h2 class="uk-card-title"><span uk-icon="icon: lock"></span>Change Your Password</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.hidden_field :reset_password_token %>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
+    <div class="uk-card-body">
 
-<%= render "devise/shared/links" %>
+      <div class="uk-margin">
+        <%= f.label :password, class: "uk-form-label" %>
+        <%= f.password_field :password, autocomplete: "off", class: "uk-input",
+                              placeholder: "minimum length #{@minimum_password_length}" %>
+      </div>
+
+      <div class="uk-margin">
+        <%= f.label :password_confirmation, class: "uk-form-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "uk-input" %>
+      </div>
+
+      <div class="uk-margin">
+        <%= f.submit "Change Password", class: "uk-button uk-button-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="uk-card-footer">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

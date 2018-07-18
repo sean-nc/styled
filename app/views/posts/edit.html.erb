@@ -1,18 +1,19 @@
-<div class="uk-form-stacked user-form uk-card uk-card-default">
-  <%= form_for(@post, url: [current_user, @post]) do |form| %>
-    <% if @post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-        <ul>
-        <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<%= form_for(@post, url: [current_user, @post]) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <div class="uk-alert-danger" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <%= message %>
+          </div>
         <% end %>
-        </ul>
-      </div>
-    <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-   <div class="uk-card-header">
+  <div class="uk-form-stacked user-form uk-card uk-card-default">
+    <div class="uk-card-header">
       <h2 class="uk-card-title"><span uk-icon="icon: image"></span>Edit Post</h2>
     </div>
 

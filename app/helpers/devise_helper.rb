@@ -4,9 +4,10 @@ module DeviseHelper
 
     messages = resource.errors.full_messages.map {
       |msg|
-      "<li style='list-style: none'>
-          #{msg}
-      </li>"
+      "<div class='uk-alert-danger' uk-alert>
+        <a class='uk-alert-close' uk-close></a>
+        #{msg}
+      </div>"
     }.join
 
     sentence = I18n.t("errors.messages.not_saved",
@@ -15,8 +16,9 @@ module DeviseHelper
 
     html = <<-HTML
     <div id="error_explanation">
-      <h2>#{sentence}</h2>
-      <ul class='uk-alert-danger'>#{messages}</ul>
+      <ul>
+        #{messages}
+      </ul>
     </div>
     HTML
 

@@ -38,7 +38,7 @@ sean = User.find(1)
 
 5.times do |n|
   5.times do |n|
-    image = File.open(File.join(Rails.root, "public/test_images/#{n+1}.png"))
+    image = File.open(File.join(Rails.root, "public/test_images/#{n+1}.jpg"))
     description = Faker::Seinfeld.quote
 
     post = sean.posts.create!(image: image,
@@ -69,7 +69,7 @@ end
 
 users.each do |user|
   3.times do |n|
-    image = File.open(File.join(Rails.root, "public/test_images/#{n+1}.png"))
+    image = File.open(File.join(Rails.root, "public/test_images/#{n+1}.jpg"))
     description = Faker::Seinfeld.quote
 
     post = user.posts.create!(image: image,

@@ -1,1 +1,25 @@
 <% provide(:title, 'Contact Us') %>
+<div class="uk-form-stacked user-form uk-card uk-card-default">
+  <%= form_for(@message, url: messages_path) do |form| %>
+    <div class="uk-card-header">
+      <h2 class="uk-card-title"><span uk-icon="icon: mail"></span>Contact Us</h2>
+    </div>
+
+    <div class="uk-card-body">
+
+      <div class="uk-margin">
+        <%= form.label :email, class: "uk-form-label" %>
+        <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input" %>
+      </div>
+
+      <div class="uk-margin">
+        <%= form.label :body, class: "uk-form-label" %>
+        <%= form.text_area :body, class: "uk-textarea", size: "10x5" %>
+      </div>
+
+      <div class="uk-margin">
+        <%= form.submit "Send Email", class: "uk-button uk-button-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

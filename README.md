@@ -16,7 +16,9 @@ https://on-trend.herokuapp.com/
 
 #### Login Info
 username: Sean
-password: password
+or
+any of: user1 to user99
+all passwords: password
 or create an account.
 
 #### Usage

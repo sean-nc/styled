@@ -2,6 +2,8 @@
 
 **Post styles of yourself or others that you like**
 
+https://on-trend.herokuapp.com/
+
 ###### Technologies
 
 * Ruby on Rails

@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
+$(function() {
   $('#pictureInput').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]

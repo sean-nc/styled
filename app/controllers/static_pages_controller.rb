@@ -1,5 +1,14 @@
 class StaticPagesController < ApplicationController
-  before_action :logged_in?, only: [:find_users, :vote, :explore]
+  before_action :logged_in?, only: [:home, :find_users, :vote, :explore]
+
+  def home
+    @following_id = current_user.following.map(&:id)
+    @posts = Post.where(user_id: @following_id).paginate(:page => params[:page], :per_page => 9)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def about
   end

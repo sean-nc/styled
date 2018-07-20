@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :clothing_articles, dependent: :destroy
   has_many :cards, dependent: :destroy
   has_many :votes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, presence: true,

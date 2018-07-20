@@ -33,7 +33,7 @@
   </div>
 
   <% if @post.clothing_articles.any? %>
-    <h4 class="clothing-header">Clothing</h4>
+    <h4>Clothing (<%= @post.clothing_articles.count %>)</h4>
 
     <% @post.clothing_articles.each do |clothing| %>
       <div class=" clothing-article-card uk-card">
@@ -59,6 +59,29 @@
               </div>
             <% end %>
           </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if @post.comments.any? %>
+    <h4>Comments (<%= @post.comments.count %>)</h4>
+
+    <% @post.comments.each do |comment| %>
+      <div class=" comment-article-card uk-card">
+
+        <div class="uk-card-body">
+          <p class="comment-description">
+            <strong><%= link_to comment.user.username, comment.user %>: </strong>
+            <%= comment.body %>
+          </p>
+
+          <% if  current_user == comment.user || current_user?(@user) %>
+            <div class="uk-margin">
+              <%= link_to 'Destroy', [current_user, @post, comment], method: :delete,
+                          data: { confirm: 'Are you sure?' }, class: "uk-button uk-button-danger" %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>

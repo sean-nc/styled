@@ -18,11 +18,8 @@
 }
 
 // Clothing Article Card
-.clothing-header {
-  font-size: 1.8rem;
-}
-
-.clothing-article-card {
+.clothing-article-card,
+.comment-article-card {
   margin-left: auto;
   margin-right: auto;
 
@@ -40,7 +37,8 @@
     font-weight: 500;
   }
 
-  .clothing-description {
+  .clothing-description,
+  .comment-description {
     font-size: 1.4rem;
   }
 }

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     resources     :posts,                 only: [:show, :new, :create, :destroy, :edit, :update] do
       resources   :clothing_articles,     only: [:new, :create, :destroy, :edit, :update]
+      resources   :comments,              only: [:new, :create, :destroy]
     end
   end
 

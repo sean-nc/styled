@@ -16,18 +16,15 @@
     <%= image_tag @post.image.url if @post.image? %>
 
     <div class="uk-card uk-card-default uk-form-stacked uk-margin">
-      <div class="uk-card-header">
-        <h2 class="uk-card-title">New Comment</h2>
-      </div>
 
       <div class="uk-card-body">
         <div class="uk-margin">
-          <%= form.label :body, class: "uk-form-label" %>
+          <%= form.label :body, "Comment", class: "uk-form-label" %>
           <%= form.text_area :body, class: "uk-textarea", size: "10x5" %>
         </div>
 
         <div class="uk-margin">
-          <%= form.submit "Submit", class: "uk-button uk-button-primary" %>
+          <%= form.submit class: "uk-button uk-button-primary" %>
         </div>
 
       <% end %>

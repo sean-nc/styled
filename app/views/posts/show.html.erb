@@ -21,15 +21,20 @@
                     data: { confirm: 'Are you sure?' }, class: "uk-button uk-button-danger" %>
       </div>
 
-      <div>
+      <div class="uk-margin">
         <%= link_to 'Edit Post', edit_user_post_path(current_user, @post), class: "uk-button uk-button-default" %>
       </div>
 
       <div class="uk-margin">
         <%= link_to 'Add Clothing', new_user_post_clothing_article_path(current_user, @post),
-                  class: "uk-button uk-button-default" %>
+                    class: "uk-button uk-button-default" %>
       </div>
     <% end %>
+
+    <div class="uk-margin">
+      <%= link_to 'Add Comment', new_user_post_comment_path(@post.user, @post),
+                  class: "uk-button uk-button-default" %>
+    </div>
   </div>
 
   <% if @post.clothing_articles.any? %>

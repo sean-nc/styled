@@ -23,4 +23,13 @@ class UsersController < ApplicationController
     @users = @user.followers
     render 'show_follow'
   end
+
+  def liked_photos
+    @user = User.friendly.find(params[:id])
+    likes = @user.liked_posts
+    votes = Vote.where(user_id: @user.id).where(stylish: "Yes").select(:card_id)
+    cards = Post.where(id: Card.where(id: votes).select(:post_id))
+    posts = likes + cards
+    @posts = posts.uniq.sort_by(&:created_at).reverse!.paginate(:page => params[:page], :per_page => 9)
+  end
 end

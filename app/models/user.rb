@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
-  has_many :following, through: :active_relationships,  source: :followed
+  has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :cards, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, presence: true,

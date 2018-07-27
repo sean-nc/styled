@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_20_171519) do
+ActiveRecord::Schema.define(version: 2018_07_26_235512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 2018_07_20_171519) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_cards_on_post_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.string "identifier"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "clothing_articles", force: :cascade do |t|
@@ -44,6 +50,16 @@ ActiveRecord::Schema.define(version: 2018_07_20_171519) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -75,6 +91,24 @@ ActiveRecord::Schema.define(version: 2018_07_20_171519) do
     t.text "body"
   end
 
+  create_table "msgs", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "chat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "personal_messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_personal_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_personal_messages_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id"
     t.text "description"
@@ -93,6 +127,13 @@ ActiveRecord::Schema.define(version: 2018_07_20_171519) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "chat_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -137,6 +178,8 @@ ActiveRecord::Schema.define(version: 2018_07_20_171519) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "personal_messages", "conversations"
+  add_foreign_key "personal_messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "votes", "cards"
   add_foreign_key "votes", "users"

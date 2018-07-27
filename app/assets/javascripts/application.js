@@ -15,6 +15,7 @@
 //= require jquery
 //= require turbolinks
 //= require_tree .
+//= require_tree ./channels
 
 $(function() {
   $('#pictureInput').on('change', function(event) {

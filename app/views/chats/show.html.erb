@@ -1,16 +1,22 @@
-<div>
-  <h5>Chat with <%= @other_user.username %></h5>
-  <% if @chat.msgs.any? %>
-    <div id="msgs">
-      <%= render partial: 'msgs/msg', collection: @chat.msgs.order(id: :asc)%>
+<div class="chat-msgs uk-form-stacked user-form uk-card uk-card-default">
+  <div>
+    <div class="uk-card-header">
+      <h5 class="uk-card-title"><span uk-icon="icon: comment"></span><%= @other_user.username %></h5>
     </div>
-  <%else%>
-    <div id="msgs">
-    </div>
-  <%end%>
-</div>
+    <div class="uk-card-body">
+      <% if @chat.msgs.any? %>
+        <div id="msgs">
+          <%= render partial: 'msgs/msg', collection: @chat.msgs.order(id: :asc)%>
+        </div>
+      <%else%>
+        <div id="msgs">
+        </div>
+      <%end%>
 
-<%= render partial: 'msgs/msg_form', locals: {msg: @msg, chat: @chat}%>
+      <%= render partial: 'msgs/msg_form', locals: { msg: @msg, chat: @chat }%>
+    </div>
+  </div>
+</div>
 
 <script>
   createMsgChannel();

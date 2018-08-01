@@ -1,5 +1,9 @@
 <%= link_to 'Liked Photos', liked_photos_user_path(@user) %>
 
+<% unless current_user?(@user) %>
+  <%= link_to "Chat", user_chats_path(current_user, :other_user => @user.id), method: :post %>
+<% end %>
+
 <div class="user-show-info">
   <div>
     <% if @user.avatar? %>

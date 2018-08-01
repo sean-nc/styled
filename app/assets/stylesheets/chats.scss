@@ -1,3 +1,21 @@
-// Place all the styles related to the chats controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.chat-msgs {
+  max-width: 60rem;
+  margin: 0 auto;
+
+  #msgs {
+    max-height: 40rem;
+    overflow: auto;
+
+    .chat-msg {
+      font-size: 1.4rem;
+
+      .msg-username {
+        font-weight: 500;
+      }
+    }
+
+    .msg-timestamp {
+      font-size: 1.2rem;
+    }
+  }
+}

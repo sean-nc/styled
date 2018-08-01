@@ -1,1 +1,5 @@
-<p><%= msg.user.username %>: <%=msg.content%></p>
+<p class="chat-msg">
+  <span class="msg-username"><%= msg.user.username %></span>: <%=msg.content%>
+  <br/>
+  <span class="msg-timestamp"><%= msg.created_at %></span>
+</p>

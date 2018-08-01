@@ -3,7 +3,6 @@ class MsgsController < ApplicationController
     msg = Msg.new(msg_params)
     msg.user = current_user
     if msg.save
-
       ActionCable.server.broadcast( "msgs_#{msg_params[:chat_id]}",
         msg: msg.content,
         user: msg.user.username

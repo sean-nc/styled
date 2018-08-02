@@ -1,3 +1,42 @@
+.chats {
+  margin: 0 auto;
+  max-width: 40rem;
+}
+.chats-link {
+  border-top: 0.1rem darken(#FFF, 4);
+  border-bottom: 0.1rem solid darken(#FFF, 4);
+
+  &:hover {
+    background-color: darken(#FFF, 3);
+  }
+
+  a,
+  a:hover {
+    color: #666;
+    text-decoration: none;
+  }
+  .chat {
+    margin: 0;
+    padding: 2rem;
+    display: block;
+    font-size: 1.4rem;
+  }
+
+  .chat-username {
+    font-weight: 500;
+  }
+
+  .chat-content {
+    font-size: 1.3rem;
+    font-weight: 300;
+  }
+
+  .chat-timestamp {
+    font-size: 1.1rem;
+    // text-align: right;
+  }
+}
+
 .chat-msgs {
   max-width: 60rem;
   margin: 0 auto;
@@ -8,6 +47,7 @@
 
     .chat-msg {
       font-size: 1.3rem;
+      font-weight: 300;
 
       .msg-username {
         font-weight: 500;

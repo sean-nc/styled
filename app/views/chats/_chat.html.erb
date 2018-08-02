@@ -1,0 +1,19 @@
+<% chat.users.each do |user| %>
+  <% unless user == current_user %>
+    <div class="chats-link">
+      <%= link_to(user_chats_path(current_user, :other_user => user.id), method: :post) do %>
+        <div class="chat">
+          <div class="chat-username uk-margin">
+            <%= user.username %>:
+            <span class="chat-content">
+              <%= chat.msgs.last.content.truncate(100) %>
+            </span>
+          </div>
+          <div class="chat-timestamp">
+            <%= chat.msgs.last.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%e %b %Y - %H:%M:%S") %> EST
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,13 +1,8 @@
-<ul>
- <% if @existing_chats_users %>
-   <% @existing_chats_users.each do |other_user| %>
-    <% if other_user != current_user %>
-      <li>
-        <%= link_to(user_chats_path(current_user, :other_user => other_user.id), method: :post) do %>
-        <%= other_user.username %>
-        <% end %>
-      </li>
-     <% end %>
-   <% end %>
-  <% end %>
-</ul>
+<% if @existing_chats_users.any? %>
+  <div class="chats uk-form-stacked user-form uk-card uk-card-default">
+    <div class="uk-card-header">
+      <h5 class="uk-card-title"><span uk-icon="icon: comments"></span>Conversations</h5>
+    </div>
+    <%= render partial: 'chat', collection: @chats %>
+  </div>
+<% end %>

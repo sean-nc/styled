@@ -1,5 +1,7 @@
 <p class="chat-msg">
-  <span class="msg-username"><%= msg.user.username %></span>: <%=msg.content%>
+  <span class="msg-username"><%= msg.user.username %></span>: <%= msg.content %>
   <br/>
-  <span class="msg-timestamp"><%= msg.created_at %></span>
+  <span class="msg-timestamp">
+    <%= msg.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%e %b %Y - %H:%M:%S") %> EST
+  </span>
 </p>

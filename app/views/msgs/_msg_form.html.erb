@@ -1,11 +1,11 @@
 <%=form_for msg, remote: true, authenticity_token: true do |f|%>
   <div class="uk-margin">
-    <%= f.text_area :content, data: { textarea: "msg" }, class: "uk-textarea", size: "10x5" %>
+    <%= f.text_area :content, data: { textarea: "msg" }, class: "uk-textarea", size: "10x5", id: "chat-textarea" %>
   </div>
 
   <%= f.hidden_field :chat_id, value: chat.id %>
 
-  <div class="uk-margin">
+  <div>
     <%= f.submit "Send", class: "uk-button uk-button-primary" %>
   </div>
 <%end%>

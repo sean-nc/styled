@@ -5,10 +5,13 @@ function createMsgChannel() {
   {
     received: function(data) {
       $("#msgs").removeClass('hidden')
-      return $('#msgs').append(this.rendermsg(data));
+      $('#msgs').append(this.rendermsg(data));
+      $("#msgs").animate({ scrollTop: $("#msgs").prop("scrollHeight")}, 1000);
+      $("#chat-textarea").val("");
+      return
     },
     rendermsg: function(data) {
-      return "<p class='chat-msg'><span class='msg-username'>"+ data.user + "</span>: " + data.msg + "</p>";
+      return "<p class='chat-msg'><span class='msg-username'>" + data.user + "</span>: " + data.msg + "<br/>" + "</p>";
     },
   });
 return App.msgs;

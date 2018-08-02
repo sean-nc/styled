@@ -1,4 +1,5 @@
 <%= link_to 'Liked Photos', liked_photos_user_path(@user) %>
+<%= link_to 'Chats', user_chats_path(@user) %>
 
 <% unless current_user?(@user) %>
   <%= link_to "Chat", user_chats_path(current_user, :other_user => @user.id), method: :post %>

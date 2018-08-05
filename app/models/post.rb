@@ -10,11 +10,19 @@ class Post < ApplicationRecord
   validates :description, length: { maximum: 300 }
   validates :user_id, presence: true
 
-  def self.search(term)
-    if term
-      self.where('description ILIKE ?', "%#{term}%").order("random()")
+  def self.search(term, gender)
+    if gender == "Both" || gender.nil?
+      if term
+        self.where('description ILIKE ?', "%#{term}%").order("random()")
+      else
+        self.all.order("random()")
+      end
     else
-      self.all.order("random()")
+      if term
+        self.where('description ILIKE ?', "%#{term}%").where(gender: gender).order("random()")
+      else
+        self.where(gender: gender).order("random()")
+      end
     end
   end
 end

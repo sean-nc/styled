@@ -1,25 +1,10 @@
 <div class="uk-margin-large search-form">
   <%= form_tag(explore_path, method: :get) do %>
-
-   <!--  <div class=uk-margin">
-      <div>
-        <%= label_tag :gender, "Both", class: "radio-label" %>
-        <%= radio_button_tag :gender, "Both", :gender == "Both",
-                              class: "uk-radio" %>
-      </div>
-      <div>
-        <%= label_tag :gender, "Male", class: "radio-label" %>
-        <%= radio_button_tag :gender, "Male", class: "uk-radio" %>
-      </div>
-      <div>
-        <%= label_tag :gender, "Female", class: "radio-label" %>
-        <%= radio_button_tag :gender, "Female", class: "uk-radio" %>
-      </div>
-    </div> -->
-
-
-    <%= select_tag :gender, options_for_select(
-                  ["Both", "Male", "Female"], params[:gender]) %>
+    <div class="uk-margin">
+      <%= label_tag :gender %>
+      <%= select_tag :gender, options_for_select(
+                    ["Both", "Male", "Female"], params[:gender]), class: "uk-select" %>
+    </div>
 
     <div class="uk-inline search-bar">
       <a class="uk-form-icon" href="#" uk-icon="icon: search"></a>

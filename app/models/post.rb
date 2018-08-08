@@ -25,8 +25,8 @@ class Post < ApplicationRecord
   private
 
   def correct_colours
-    unless self.colours.nil? || self.colours.empty?
-      if self.colours.detect { |c| !(COLOUR_OPTIONS.include? c) }
+    unless colours.nil?
+      if colours.any? { |colour| COLOUR_OPTIONS.exclude?(colour) }
         errors.add(:post, "includes invalid colours")
       end
     end

@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  COLOUR_OPTIONS = %w(White Black Grey Yellow Red Blue Green Brown Pink Orange Purple)
   mount_uploader :image, ImageUploader
   belongs_to :user
   has_many :likes, dependent: :destroy
@@ -6,22 +7,27 @@ class Post < ApplicationRecord
   has_many :cards, dependent: :destroy
   has_many :comments, dependent: :destroy
   validates :image, presence: true
-  validates :gender, presence: true, :inclusion => { :in => ["Male", "Female"] }
+  validates :gender, presence: true, inclusion: { in: ["Male", "Female"] }
   validates :description, length: { maximum: 300 }
   validates :user_id, presence: true
+  validate :correct_colours
 
-  def self.search(term, gender)
-    if gender == "Both" || gender.nil?
-      if term
-        self.where('description ILIKE ?', "%#{term}%").order("random()")
-      else
-        self.all.order("random()")
-      end
-    else
-      if term
-        self.where('description ILIKE ?', "%#{term}%").where(gender: gender).order("random()")
-      else
-        self.where(gender: gender).order("random()")
+
+  def self.search(term, gender, colours)
+    query_obj = self.all
+    query_obj = query_obj.where('description ILIKE ?', "%#{term}%") unless term.blank?
+    query_obj = query_obj.where(gender: gender) unless gender == "Both"
+    query_obj = query_obj.where(colours: colours) unless colours.blank?
+
+    query_obj.order("random()")
+  end
+
+  private
+
+  def correct_colours
+    unless self.colours.nil? || self.colours.empty?
+      if self.colours.detect { |c| !(COLOUR_OPTIONS.include? c) }
+        errors.add(:post, "includes invalid colours")
       end
     end
   end

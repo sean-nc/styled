@@ -6,6 +6,15 @@
                     ["Both", "Male", "Female"], params[:gender]), class: "uk-select" %>
     </div>
 
+    <div class="uk-margin">
+      <% @colours.each do |colour| %>
+        <%= label_tag colour %>
+        <%= check_box_tag "colours[]", colour,
+                          class: "uk-checkbox" %>
+      <% end %>
+    </div>
+
+
     <div class="uk-inline search-bar">
       <a class="uk-form-icon" href="#" uk-icon="icon: search"></a>
       <%= text_field_tag :term, params[:term], class: "uk-input" %>

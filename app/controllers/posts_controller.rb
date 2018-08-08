@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :destroy, :edit, :update]
   before_action :correct_user?, only: :destroy
   before_action :logged_in?
+  before_action :set_colours
 
   def show
     @user = User.find(@post.user_id)
@@ -13,6 +14,8 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.colours = params[:colours]
+
     if @post.save
       card = @post.cards.create(user_id: current_user.id)
       current_user.upvote(card)
@@ -47,7 +50,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def set_colours
+    @colours = ["White", "Black", "Grey", "Yellow", "Red", "Blue", "Green", "Brown", "Pink", "Orange", "Purple"]
+  end
+
   def post_params
-    params.require(:post).permit(:image, :gender, :description)
+    params.require(:post).permit(:image, :gender, :description, :colours)
   end
 end

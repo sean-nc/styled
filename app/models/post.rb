@@ -17,7 +17,7 @@ class Post < ApplicationRecord
     query_obj = self.all
     query_obj = query_obj.where('description ILIKE ?', "%#{term}%") unless term.blank?
     query_obj = query_obj.where(gender: gender) unless gender.blank? || gender == "Both"
-    query_obj = query_obj.where("colours && ARRAY[?]", colours) unless colours.blank?
+    query_obj = query_obj.where("colours && ARRAY[?]::varchar[]", colours) unless colours.blank?
 
     query_obj.order("random()")
   end

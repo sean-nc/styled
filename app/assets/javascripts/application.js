@@ -17,7 +17,7 @@
 //= require_tree .
 //= require_tree ./channels
 
-$(function() {
+$(document).on('turbolinks:load', function() {
   $('#pictureInput').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]

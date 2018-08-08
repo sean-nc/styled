@@ -39,13 +39,13 @@
           <%= form.radio_button :gender, "Male", checked: current_user.gender == "Male",
                                 class: "uk-radio" %>
         </div>
-        <div>
+        <div class="uk-margin">
           <%= form.label :gender, "Female", class: "radio-label" %>
           <%= form.radio_button :gender, "Female", checked: current_user.gender == "Female",
                                 class: "uk-radio" %>
         </div>
 
-        <div>
+        <div class="uk-margin">
           <% @colours.each do |colour| %>
             <%= label_tag colour %>
             <%= check_box_tag "colours[]", colour,

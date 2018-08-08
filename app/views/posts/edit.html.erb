@@ -45,6 +45,15 @@
                                 class: "uk-radio" %>
         </div>
       </div>
+
+      <div class="uk-margin">
+        <% @colours.each do |colour| %>
+          <%= label_tag colour %>
+          <%= check_box_tag "colours[]", colour,
+                            class: "uk-checkbox" %>
+        <% end %>
+      </div>
+
       <div class="uk-margin">
         <%= form.submit class: "uk-button uk-button-primary" %>
       </div>

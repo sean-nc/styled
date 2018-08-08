@@ -36,6 +36,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post.colours = params[:colours]
     if @post.update_attributes(post_params)
       flash[:success] = "Post updated"
       redirect_to [current_user, @post]
@@ -55,6 +56,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:image, :gender, :description, :colours)
+    params.require(:post).permit(:image, :gender, :description)
   end
 end

@@ -6,13 +6,23 @@
                     ["Both", "Male", "Female"], params[:gender]), class: "uk-select" %>
     </div>
 
-    <div class="uk-margin">
-      <% @colours.each do |colour| %>
-        <%= label_tag colour %>
-        <%= check_box_tag "colours[]", colour,
-                          class: "uk-checkbox" %>
-      <% end %>
-    </div>
+    <% if params[:colours].nil? %>
+      <div class="uk-margin">
+        <% @colours.each do |colour| %>
+          <%= label_tag colour %>
+          <%= check_box_tag "colours[]", colour, false,
+                            class: "uk-checkbox" %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="uk-margin">
+        <% @colours.each do |colour| %>
+          <%= label_tag colour %>
+          <%= check_box_tag "colours[]", colour, params[:colours].include?(colour) ? true : false,
+                            class: "uk-checkbox" %>
+        <% end %>
+      </div>
+    <% end %>
 
 
     <div class="uk-inline search-bar">

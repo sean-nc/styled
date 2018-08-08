@@ -45,13 +45,24 @@
                                 class: "uk-radio" %>
         </div>
 
-        <div class="uk-margin">
-          <% @colours.each do |colour| %>
-            <%= label_tag colour %>
-            <%= check_box_tag "colours[]", colour,
-                              class: "uk-checkbox" %>
-          <% end %>
-        </div>
+        <% if params[:colours].nil? %>
+          <div class="uk-margin">
+            <% @colours.each do |colour| %>
+              <%= label_tag colour %>
+              <%= check_box_tag "colours[]", colour, false,
+                                class: "uk-checkbox" %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="uk-margin">
+            <% @colours.each do |colour| %>
+              <%= label_tag colour %>
+              <%= check_box_tag "colours[]", colour, params[:colours].include?(colour) ? true : false,
+                                class: "uk-checkbox" %>
+            <% end %>
+          </div>
+        <% end %>
+
       </div>
       <div class="uk-margin">
         <%= form.submit class: "uk-button uk-button-primary" %>

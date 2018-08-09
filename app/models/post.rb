@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   COLOUR_OPTIONS = %w(White Black Grey Yellow Red Blue Green Brown Pink Orange Purple)
+  STYLE_OPTIONS = %w(Formal)
   mount_uploader :image, ImageUploader
   belongs_to :user
   has_many :likes, dependent: :destroy
@@ -10,7 +11,7 @@ class Post < ApplicationRecord
   validates :gender, presence: true, inclusion: { in: ["Male", "Female"] }
   validates :description, length: { maximum: 300 }
   validates :user_id, presence: true
-  validates :style, presence: true, inclusion: { in: [] }
+  validates :style, inclusion: { in: STYLE_OPTIONS }
   validate :correct_colours
 
 

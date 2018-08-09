@@ -1,4 +1,4 @@
-$('#my-posts').append("<%= j render(partial: 'popular_posts', collection: @cards, as: :card) %>")
+$('#my-posts').append("<%= j render(partial: 'popular_post', collection: @cards, as: :card) %>")
 <% if @cards.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @cards %>');
 <% else %>

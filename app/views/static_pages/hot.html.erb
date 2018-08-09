@@ -1,7 +1,7 @@
 <h2>Most popular posts in the last <%= @time %></h2>
 <% if @cards.any? %>
   <div id="my-posts" class="grid">
-    <%= render partial: 'popular_posts', collection: @cards, as: :card %>
+    <%= render partial: 'popular_post', collection: @cards, as: :card %>
   </div>
 <% else %>
   <h1 class="uk-heading-line uk-text-center"><span>Sorry, no posts.</span></h1>

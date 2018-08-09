@@ -31,7 +31,8 @@ class StaticPagesController < ApplicationController
 
   def explore
     @colours = ["White", "Black", "Grey", "Yellow", "Red", "Blue", "Green", "Brown", "Pink", "Orange", "Purple"]
-    @posts = Post.search(params[:term], params[:gender], params[:colours]).where.not(user_id: current_user.id).paginate(:page => params[:page], :per_page => 9)
+    @posts = Post.search(params[:term], params[:gender], params[:colours], params[:style])
+                 .where.not(user_id: current_user.id).paginate(:page => params[:page], :per_page => 9)
     respond_to do |format|
       format.html
       format.js

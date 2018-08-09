@@ -15,11 +15,12 @@ class Post < ApplicationRecord
   validate :correct_colours
 
 
-  def self.search(term, gender, colours)
+  def self.search(term, gender, colours, style)
     query_obj = self.all
     query_obj = query_obj.where('description ILIKE ?', "%#{term}%") unless term.blank?
     query_obj = query_obj.where(gender: gender) unless gender.blank? || gender == "Both"
     query_obj = query_obj.where("colours && ARRAY[?]::varchar[]", colours) unless colours.blank?
+    query_obj = query_obj.where(style: style) unless style.blank?
 
     query_obj.order("random()")
   end

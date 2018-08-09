@@ -6,6 +6,13 @@
                     ["Both", "Male", "Female"], params[:gender]), class: "uk-select" %>
     </div>
 
+    <div class="uk-margin">
+      <%= label_tag :style %>
+      <%= select_tag :style, options_for_select(
+                     %w(Boho Business Casual Classic Formal Grunge Preppy Street Sporty Trendy Vintage),
+                     params[:style]), include_blank: true, class: "uk-select" %>
+    </div>
+
     <% if params[:colours].nil? %>
       <div class="uk-margin">
         <% @colours.each do |colour| %>

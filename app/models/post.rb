@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   validates :gender, presence: true, inclusion: { in: ["Male", "Female"] }
   validates :description, length: { maximum: 300 }
   validates :user_id, presence: true
+  validates :style, presence: true, inclusion: { in: [] }
   validate :correct_colours
 
 

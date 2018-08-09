@@ -1,6 +1,6 @@
-$('#my-posts').append('<%= j render @posts %>');
-<% if @posts.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate @posts %>');
+$('#my-posts').append("<%= j render(partial: 'popular_posts', collection: @cards, as: :card) %>")
+<% if @cards.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @cards %>');
 <% else %>
   $(window).off('scroll');
   $('.pagination').remove();

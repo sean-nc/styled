@@ -39,15 +39,19 @@ class StaticPagesController < ApplicationController
   end
 
   def hot
-    time = 24.hours.ago
-    @cards = Card.joins(:votes).where(votes: Vote.popular_from(time))
+    @time = 24.hours.ago
+    @cards = Card.joins(:votes).where(votes: Vote.popular_from(@time))
+
+    #### optimize later
+    # @cards = Card.left_joins(:votes)
+    #              .select("cards.*, COUNT(votes.id) as vote_count")
+    #              .group("votes.card_id")
+    #              .order("vote_count")
+    #              .distinct("cards.id")
+
     if @cards.any?
-      @cards = @cards.sort_by { |card| -card.votes.popular_from(time).count }
-      # @cards = @cards.sort! do |a, b|
-      #   a_count = a.votes.popular_from(time).count
-      #   b_count = b.votes.popular_from(time).count
-      #   a_count <=> b_count
-      # end
+      @cards = @cards.sort_by { |card| -card.votes.popular_from(@time).count }
+                                     .paginate(:page => params[:page], :per_page => 10)
     else
       @cards = Card.all
     end

@@ -1,4 +1,12 @@
-<h2>Most Voted Posts</h2>
-<% @cards.each do |card| %>
-  <%= card.votes.popular_from(24.hours.ago).count %>
+<h2>Most popular posts in the last <%= @time %></h2>
+<% if @cards.any? %>
+  <div id="my-posts" class="grid">
+    <%= render partial: 'popular_posts', collection: @cards, as: :card %>
+  </div>
+<% else %>
+  <h1 class="uk-heading-line uk-text-center"><span>Sorry, no posts.</span></h1>
 <% end %>
+
+<div id="infinite-scrolling">
+  <%= will_paginate @cards %>
+</div>

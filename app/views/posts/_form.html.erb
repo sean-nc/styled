@@ -33,19 +33,27 @@
         <%= form.text_area :description, class: "uk-textarea", size: "10x5" %>
       </div>
 
-      <div class=uk-margin">
+      <div class="uk-margin">
         <div>
           <%= form.label :gender, "Male", class: "radio-label" %>
           <%= form.radio_button :gender, "Male", checked: current_user.gender == "Male",
                                 class: "uk-radio" %>
         </div>
-        <div class="uk-margin">
+        <div>
           <%= form.label :gender, "Female", class: "radio-label" %>
           <%= form.radio_button :gender, "Female", checked: current_user.gender == "Female",
                                 class: "uk-radio" %>
         </div>
+      </div>
 
-        <% if params[:colours].nil? %>
+        <div class="uk-margin">
+          <%= form.label :style %>
+          <%= form.select :style, options_for_select(
+                        %w(Boho Business Casual Classic Formal Grunge Preppy Street Sporty Trendy Vintage)),
+                        { include_blank: true }, { class: "uk-select" } %>
+        </div>
+
+        <% if @post.colours.nil? %>
           <div class="uk-margin">
             <% @colours.each do |colour| %>
               <%= label_tag colour %>
@@ -57,13 +65,12 @@
           <div class="uk-margin">
             <% @colours.each do |colour| %>
               <%= label_tag colour %>
-              <%= check_box_tag "colours[]", colour, params[:colours].include?(colour) ? true : false,
+              <%= check_box_tag "colours[]", colour, @post.colours.include?(colour) ? true : false,
                                 class: "uk-checkbox" %>
             <% end %>
           </div>
         <% end %>
 
-      </div>
       <div class="uk-margin">
         <%= form.submit class: "uk-button uk-button-primary" %>
       </div>

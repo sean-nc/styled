@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   COLOUR_OPTIONS = %w(White Black Grey Yellow Red Blue Green Brown Pink Orange Purple)
-  STYLE_OPTIONS = %w(Formal)
+  STYLE_OPTIONS = %w(Boho Business Casual Classic Formal Grunge Preppy Street Sporty Trendy Vintage)
   mount_uploader :image, ImageUploader
   belongs_to :user
   has_many :likes, dependent: :destroy
@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :gender, presence: true, inclusion: { in: ["Male", "Female"] }
   validates :description, length: { maximum: 300 }
   validates :user_id, presence: true
-  validates :style, inclusion: { in: STYLE_OPTIONS }
+  validates :style, inclusion: { in: STYLE_OPTIONS }, allow_blank: true
   validate :correct_colours
 
 

@@ -2,7 +2,7 @@
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <ul>
-        <% post.errors.full_messages.each do |message| %>
+        <% @post.errors.full_messages.each do |message| %>
           <div class="uk-alert-danger" uk-alert>
             <a class="uk-alert-close" uk-close></a>
             <%= message %>
@@ -44,6 +44,14 @@
           <%= form.radio_button :gender, "Female", checked: current_user.gender == "Female",
                                 class: "uk-radio" %>
         </div>
+      </div>
+
+      <div class="uk-margin">
+        <%= form.label :style %>
+          <%= form.select :style, options_for_select(
+                        %w(Boho Business Casual Classic Formal Grunge Preppy Street Sporty Trendy Vintage),
+                        selected: @post.style),
+                        { include_blank: true }, { class: "uk-select", selected: @post.style } %>
       </div>
 
       <% if @post.colours.nil? %>

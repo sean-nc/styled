@@ -15,7 +15,6 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @post.colours = params[:colours]
-
     if @post.save
       card = @post.cards.create(user_id: current_user.id)
       current_user.upvote(card)
@@ -56,6 +55,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:image, :gender, :description, :style)
+    params.require(:post).permit(:image, :image_cache, :gender, :description, :style)
   end
 end

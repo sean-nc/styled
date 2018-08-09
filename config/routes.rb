@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get             '/find_users',          to: 'static_pages#find_users'
   get             '/vote',                to: 'static_pages#vote'
   get             '/explore',             to: 'static_pages#explore'
+  get             '/hot',                 to: 'static_pages#hot'
   devise_for      :users
 
   resources       :users,                 only: :show do

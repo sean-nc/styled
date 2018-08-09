@@ -37,4 +37,19 @@ class StaticPagesController < ApplicationController
       format.js
     end
   end
+
+  def hot
+    time = 24.hours.ago
+    @cards = Card.joins(:votes).where(votes: Vote.popular_from(time))
+    if @cards.any?
+      @cards = @cards.sort_by { |card| -card.votes.popular_from(time).count }
+      # @cards = @cards.sort! do |a, b|
+      #   a_count = a.votes.popular_from(time).count
+      #   b_count = b.votes.popular_from(time).count
+      #   a_count <=> b_count
+      # end
+    else
+      @cards = Card.all
+    end
+  end
 end

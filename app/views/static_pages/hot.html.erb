@@ -1,0 +1,4 @@
+<h2>Most Voted Posts</h2>
+<% @cards.each do |card| %>
+  <%= card.votes.popular_from(24.hours.ago).count %>
+<% end %>

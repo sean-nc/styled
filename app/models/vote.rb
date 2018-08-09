@@ -6,6 +6,7 @@ class Vote < ApplicationRecord
   validates :stylish, presence: true, :inclusion => { :in => ["Yes", "No"] }
   scope :upvotes, -> { where(stylish: "Yes") }
   scope :downvotes, -> { where(stylish: "No") }
+  scope :popular_from, -> (time) { where(stylish: "Yes").where("created_at BETWEEN ? AND ?", time ,Time.now) }
 
   def upvote
     self.stylish = "Yes"

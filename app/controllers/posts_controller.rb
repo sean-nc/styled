@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @post.colours = params[:colours]
+    # Refactor to use strong params here.
     if @post.save
       card = @post.cards.create(user_id: current_user.id)
       current_user.upvote(card)
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
 
   def update
     @post.colours = params[:colours]
+    # Refactor to use strong params here.
     if @post.update_attributes(post_params)
       flash[:success] = "Post updated"
       redirect_to [current_user, @post]

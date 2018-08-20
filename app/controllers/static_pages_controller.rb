@@ -43,13 +43,6 @@ class StaticPagesController < ApplicationController
     @time = 24.hours.ago
     @cards = Card.joins(:votes).where(votes: Vote.popular_from(@time))
 
-    #### optimize later
-    # @cards = Card.left_joins(:votes)
-    #              .select("cards.*, COUNT(votes.id) as vote_count")
-    #              .group("votes.card_id")
-    #              .order("vote_count")
-    #              .distinct("cards.id")
-
     if @cards.any?
       @cards = @cards.sort_by { |card| -card.votes.popular_from(@time).count }
                                      .paginate(:page => params[:page], :per_page => 10)

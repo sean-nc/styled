@@ -1,6 +1,7 @@
 require 'securerandom'
 class ChatsController < ApplicationController
   before_action :logged_in?
+
   def index
     @chats = current_user.chats.includes(:msgs).order(updated_at: :desc)
     @existing_chats_users = current_user.existing_chats_users
